@@ -1,0 +1,78 @@
+<mat-toolbar class="topbar">
+
+  <button mat-icon-button (click)="toggleCollapsed.emit()" *ngIf="showToggle" class="d-flex justify-content-center">
+    <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
+  </button>
+  <button mat-icon-button (click)="toggleMobileNav.emit()" *ngIf="!showToggle" class="d-flex justify-content-center">
+    <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
+  </button>
+  <button mat-icon-button (click)="openDialog()" class="d-flex justify-content-center">
+    <i-tabler name="search" class="icon-20 d-flex"></i-tabler>
+  </button>
+
+  <div class="d-none d-lg-flex">
+  </div>
+
+  <span class="flex-1-auto"></span>
+
+
+  <button mat-icon-button (click)="toggleMobileFilterNav.emit()" class="d-flex d-lg-none justify-content-center">
+    <i-tabler name="grid-dots" class="icon-20 d-flex"></i-tabler>
+  </button>
+
+  <button mat-icon-button [matMenuTriggerFor]="profilemenu" aria-label="Notifications">
+    <img src="/assets/images/profile/user-1.jpg" class="rounded-circle object-cover" width="35" />
+  </button>
+  <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
+    <ng-scrollbar class="position-relative" style="height: 500px">
+      <div class="p-x-32 p-y-32">
+        <h6 class="f-s-16 f-w-600 m-0">User Profile</h6>
+
+        <div class="d-flex align-items-center p-b-24 b-b-1 m-t-16">
+          <img src="/assets/images/profile/user-1.jpg" class="rounded-circle" width="95" />
+          <div class="m-l-16">
+            <h6 class="f-s-14 f-w-600 m-0">{{loggedUser}}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="p-x-32">
+        <a class="p-y-16 text-decoration-none d-block text-hover-primary" [routerLink]="[profile.link]"
+          *ngFor="let profile of profiledd">
+          <div class="d-flex align-items-center">
+            <button mat-mini-fab class="text-primary bg-light-primary shadow-none rounded">
+              <img [src]="profile.img" width="20" />
+            </button>
+
+            <div class="m-l-16">
+              <h5 class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1 hover-text">
+                {{ profile.title }}
+              </h5>
+              <span class="mat-body-1">{{ profile.subtitle }}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="p-x-32">
+        <a class="p-y-16 text-decoration-none d-block text-hover-primary"
+          [routerLink]="['/authentication/change-password']">
+          <div class="d-flex align-items-center">
+            <button mat-mini-fab class="text-primary bg-light-primary shadow-none rounded">
+              <img src="/assets/images/svgs/icon-account.svg" width="20" />
+            </button>
+
+            <div class="m-l-16">
+              <h5 class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1 hover-text">
+                Account
+              </h5>
+              <span class="mat-body-1">Update Password</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="p-y-12 p-x-32">
+        <a (click)="logout()" mat-stroked-button color="primary" class="w-100">Logout</a>
+      </div>
+    </ng-scrollbar>
+  </mat-menu>
+</mat-toolbar>

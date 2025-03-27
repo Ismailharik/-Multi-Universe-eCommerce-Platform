@@ -1,0 +1,84 @@
+<!--Start search bar and add employee button  -->
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+        <div class="row justify-content-between ">
+            <div class="col-lg-4">
+                <mat-form-field appearance="outline" class="w-100 hide-hint">
+                    <input matInput placeholder="Search Customer" #searchInput />
+                    <mat-icon matSuffix (click)="searchByName(searchInput.value)" style="cursor: pointer;">
+                        <i-tabler name="search" class="icon-20"></i-tabler>
+                    </mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-5 d-flex align-items-center justify-content-end" *ngIf="isAdmin">
+                <button mat-flat-button (click)="openDialog('Add', {})" color="primary">
+                    Ajouter Un Client
+                </button>
+               
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+
+<!-- START table  -->
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+        <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" class="w-100">
+                
+                <ng-container matColumnDef="fullName">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Full Name</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.fullName }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Email</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.email }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Phone</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.phone }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Address</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14">{{ element.address }}</td>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="active">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Active</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14">
+                        
+                        <span *ngIf="element.active == true" style="color: green"> <i-tabler name="check" class="icon-18"></i-tabler> </span>
+                        <span *ngIf="element.active == false" style="color: red"> <i-tabler name="x" class="icon-18"></i-tabler> </span>
+                    </td>
+                </ng-container>
+
+                
+                
+                <!-- Ations -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+                        Action
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="action-link">
+                        <a (click)="openDialog('Update', element)" class="m-r-10 cursor-pointer">
+                            <i-tabler name="edit" class="icon-18"></i-tabler></a>
+                        <a (click)="openDialog('Delete', element)" class="m-r-10 cursor-pointer"  *ngIf="isAdmin">
+                            <i-tabler name="trash" class="icon-18" class="m-r-10 cursor-pointer"></i-tabler>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[ 5,10, 15]" [length]="customersPage.totalPages*customersPage.size "
+                [pageSize]="customersPage.size" [pageIndex]="customersPage.page" (page)="onPageChange($event)"
+                showFirstLastButtons></mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>

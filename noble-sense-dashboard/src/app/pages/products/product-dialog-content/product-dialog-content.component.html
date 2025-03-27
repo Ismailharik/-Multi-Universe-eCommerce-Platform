@@ -1,0 +1,368 @@
+<h2 class="f-w-500 m-b-24" mat-dialog-title>
+  <strong>{{ action }} Product</strong>
+</h2>
+
+<ng-container [ngSwitch]="action">
+  <ng-container *ngSwitchCase="'Add'">
+    <ng-container *ngTemplateOutlet="addOrUpdateTemplate"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'Update'">
+    <ng-container *ngTemplateOutlet="addOrUpdateTemplate"></ng-container>
+  </ng-container>
+  <ng-template  *ngSwitchCase="'Delete'">
+    <div class="p-x-24">
+      <p>
+        Sure to delete <span class="f-w-600">{{ productName }}</span> ?
+      </p>
+    </div>
+    <div mat-dialog-actions class="p-x-24 p-b-24">
+      <button mat-button (click)="doAction()" mat-flat-button color="warn">
+        {{ action }}
+      </button>
+      <button mat-button (click)="closeDialog()" class="m-l-8">Cancel</button>
+    </div>
+  </ng-template>
+  <!-- Add background image model -->
+  <!-- <ng-template *ngSwitchDefault="'AddbackgroundImage'"> 
+    Add background image
+  </ng-template> -->
+
+</ng-container>
+
+<ng-template  #addOrUpdateTemplate>
+  <mat-dialog-content>
+    <form [formGroup]="productForm">
+      
+      <div class="row">
+        <!-- Existing Fields -->
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Description</mat-label>
+            <input
+              type="text"
+              matInput
+              required
+              id="description"
+              name="description"
+              formControlName="description"
+              placeholder="Description"
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- Additional Fields -->
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>SKU</mat-label>
+            <input
+              type="text"
+              matInput
+              id="sku"
+              name="sku"
+              formControlName="sku"
+              placeholder="SKU"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Title</mat-label>
+            <input
+              type="text"
+              matInput
+              id="title"
+              name="title"
+              formControlName="title"
+              placeholder="Title"
+            />
+          </mat-form-field>
+        </div>
+        <!-- Continuing from the previous fields -->
+        <!-- <div class=" col-lg-3 col-md-6">
+      <mat-form-field class="w-100">
+          <mat-label>Slug</mat-label>
+          <input type="text" matInput id="slug" name="slug" formControlName="slug" placeholder="Slug" />
+      </mat-form-field>
+  </div> -->
+        <!-- <div class=" col-lg-3 col-md-6">
+      <mat-form-field class="w-100">
+          <mat-label>Unit</mat-label>
+          <input type="text" matInput id="unit" name="unit" formControlName="unit" placeholder="Unit" />
+      </mat-form-field>
+  </div> -->
+        <!-- <div class="col-lg-3">
+      <mat-form-field   class="w-100">
+          <mat-label>Image URL</mat-label>
+          <input type="text" matInput id="img" name="img" formControlName="img" placeholder="Image URL" />
+      </mat-form-field>
+  </div> -->
+
+        <!-- <div class=" col-lg-3 col-md-6">
+      <mat-form-field class="w-100">
+          <mat-label>Brand</mat-label>
+          <input type="text" matInput id="brand" name="brand" formControlName="brand" placeholder="Brand" />
+      </mat-form-field>
+  </div> -->
+        <!-- Continuing from the previous fields -->
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Status</mat-label>
+            <input
+              type="text"
+              matInput
+              id="status"
+              name="status"
+              formControlName="status"
+              placeholder="Status"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Parent</mat-label>
+            <input
+              type="text"
+              matInput
+              id="parent"
+              name="parent"
+              formControlName="parent"
+              placeholder="Parent"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Product Type</mat-label>
+            <input
+              type="text"
+              matInput
+              id="productType"
+              name="productType"
+              formControlName="productType"
+              placeholder="Product Type"
+            />
+          </mat-form-field>
+        </div>
+        <!-- <div class=" col-lg-3 col-md-6">
+      <mat-form-field   class="w-100">
+          <textarea matInput id="additionalInformation" name="additionalInformation" formControlName="additionalInformation" placeholder="Additional Information"></textarea>
+      </mat-form-field>
+  </div> -->
+
+        <div class="col-lg-3 col-md-6">
+          <!-- Form Group for offerDate -->
+          <div formGroupName="offerDate">
+            <mat-form-field class="w-100">
+              <mat-label>Offer Start Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="startDate"
+                placeholder="Offer Start Date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <!-- Form Group for offerDate -->
+          <div formGroupName="offerDate">
+            <mat-form-field class="w-100">
+              <mat-label>Offer End Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker2"
+                formControlName="endDate"
+                placeholder="Offer End Date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker2"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Video Url</mat-label>
+            <input
+              type="text"
+              matInput
+              id="videoId"
+              name="videoId"
+              formControlName="videoId"
+              placeholder="Video ID"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-3 col-md-6" *ngIf="categoryPage">
+          <mat-form-field class="w-100">
+            <mat-label>Select Category</mat-label>
+            <mat-select formControlName="categoryId">
+              <mat-option
+                *ngFor="let category of categoryPage.categories"
+                [value]="category.id"
+                >{{ category.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Discount</mat-label>
+            <input
+              type="number"
+              matInput
+              id="discount"
+              name="discount"
+              formControlName="discount"
+              placeholder="Discount"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Quantity</mat-label>
+            <input
+              type="number"
+              matInput
+              id="quantity"
+              name="quantity"
+              formControlName="quantity"
+              placeholder="Quantity"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Price</mat-label>
+            <input
+              type="number"
+              matInput
+              required
+              id="price"
+              name="price"
+              formControlName="price"
+              placeholder="Prix"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Sell Count</mat-label>
+            <input
+              type="number"
+              matInput
+              id="sellCount"
+              name="sellCount"
+              formControlName="sellCount"
+              placeholder="Sell Count"
+            />
+          </mat-form-field>
+        </div>
+        <!-- <div class=" col-lg-6 col-md-6 ">
+          <mat-form-field class="example-chip-list" style="width: 100%;">
+              <mat-label>Tags</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Enter Tags" formControlName="tags">
+                <div *ngFor="let tag of this.productForm.value['tags'];  trackBy: trackByFunction">
+                  <mat-chip-row
+                    (removed)="remove(tag)"
+                    [editable]="true"
+                    (edited)="edit(tag, $event)"
+                    [aria-label]="'press enter to edit ' + tag.name">
+                    {{tag.name}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip-row>
+                </div>
+                <input placeholder="New fruit..."
+                       [matChipInputFor]="chipGrid"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       (matChipInputTokenEnd)="add($event)"/>
+              </mat-chip-grid>
+            </mat-form-field>
+      </div> -->
+
+        <div class="col-lg-3 col-md-6">
+          <mat-checkbox formControlName="featured">Featured</mat-checkbox>
+        </div>
+        <div class="row col-12" formArrayName="sizes">
+          <button
+            mat-flat-button
+            (click)="addSize()"
+            color="primary"
+            class="m-8"
+          >
+            Add Sizes
+          </button>
+          <div
+            class="col-lg-3"
+            *ngFor="let sizeControl of sizes.controls; let i = index"
+          >
+            <mat-form-field>
+              <mat-label>Size</mat-label>
+              <input matInput [formControlName]="i" placeholder="Size" />
+            </mat-form-field>
+            <button mat-button (click)="removeSize(i)">Remove</button>
+          </div>
+        </div>
+        <div classs="col-12" formArrayName="additionalInformation">
+          <button
+            mat-flat-button
+            (click)="addAdditionalInformation()"
+            class="m-8"
+            color="primary"
+          >
+            Add Additional Information
+          </button>
+          <div
+            *ngFor="let info of additionalInformation.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <mat-form-field class="m-8">
+              <mat-label>Key</mat-label>
+              <input matInput formControlName="key" />
+            </mat-form-field>
+
+            <mat-form-field class="m-8">
+              <mat-label>Value</mat-label>
+              <input matInput formControlName="value" />
+            </mat-form-field>
+            <button mat-button (click)="removeAdditionalInformation(i)">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        mat-flat-button
+        (click)="doAction()"
+        mat-flat-button
+        color="primary"
+        [disabled]="!productForm.valid"
+      >
+        {{ action }}
+      </button>
+      <button
+        mat-stroked-button
+        color="warn"
+        class="m-l-8"
+        (click)="closeDialog()"
+      >
+        Cancel
+      </button>
+    </form>
+  </mat-dialog-content>
+</ng-template>
+
+

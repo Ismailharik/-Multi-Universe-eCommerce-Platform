@@ -1,0 +1,77 @@
+<h2 class="f-w-500 m-b-24" mat-dialog-title><strong>{{ action }} HomeSlider</strong></h2>
+<mat-dialog-content *ngIf="action !== 'Delete'; else elseTemplate" style="max-width: 600px">
+    <form [formGroup]="homeSliderForm">
+        <div class="d-flex align-items-center m-b-16">
+            <button mat-flat-button color="primary" class="m-l-16 input-file-button">
+                <input type="file" (change)="selectFile($event)" #fileInput />
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" formGroupName="subtitle">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="f-s-14 f-w-600 m-b-12">Sub Title</mat-label>
+                    <div class="d-flex align-items-center">
+                        <input type="text" matInput  formControlName="text1" placeholder="text 1" />
+                        <input type="number" style="width: auto;" matInput  formControlName="percent" placeholder="Percent" class="ml-2" />
+                        <input type="text" matInput  formControlName="text2" placeholder="text 2" class="ml-2" />
+                    </div>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div formGroupName="preTitle">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label class="f-s-14 f-w-600 m-b-12">Pre Title</mat-label>
+                        <div class="d-flex align-items-center">
+                            <input type="text" matInput  formControlName="text" placeholder="Text" />
+                            <input type="number" matInput  formControlName="price" placeholder="Price" />
+                        </div>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="f-s-14 f-w-600 m-b-12">Parent</mat-label>
+                    <mat-select required formControlName="parent">
+                        <mat-option *ngFor="let option of ['produis-alimentaires']" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+            </div>
+            <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="f-s-14 f-w-600 m-b-12">Title</mat-label>
+                    <input type="text" matInput  formControlName="title" />
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="f-s-14 f-w-600 m-b-12">Background Color</mat-label>
+                    <input type="text" matInput  formControlName="backgroundColor" />
+                </mat-form-field>
+            </div>
+        </div>
+        <button mat-flat-button (click)="doAction()" mat-flat-button color="primary" [disabled]="!homeSliderForm.valid">
+            {{ action }}
+        </button>
+        <button mat-stroked-button color="warn" class="m-l-8" (click)="closeDialog()">Cancel</button>
+    </form>
+</mat-dialog-content>
+<ng-template #elseTemplate>
+    <div class="p-x-24">
+        <p>
+            Sure to delete <span class="f-w-600">{{ homeSliderForm.value.title }}</span> ?
+        </p>
+    </div>
+    <div mat-dialog-actions class="p-x-24 p-b-24">
+        <button mat-button (click)="doAction()" mat-flat-button color="warn">
+            {{ action }}
+        </button>
+        <button mat-button (click)="closeDialog()" class="m-l-8">Cancel</button>
+    </div>
+</ng-template>

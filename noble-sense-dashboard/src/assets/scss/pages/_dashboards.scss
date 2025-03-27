@@ -1,0 +1,112 @@
+.social-chips {
+  img {
+    margin-left: -9px;
+    border: 2px solid $white;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.minus-img {
+  margin-bottom: -65px !important;
+}
+
+// theme select
+.theme-select {
+  width: 125px;
+  height: 36px;
+  .mat-form-field-infix {
+    padding: 6px 0 1px !important;
+  }
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+  .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    border-color: $borderColor;
+  }
+  .mdc-text-field--outlined
+    .mdc-notched-outline
+    .mdc-notched-outline__trailing {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    border-color: $borderColor;
+  }
+  .mat-mdc-form-field-flex {
+    height: 36px;
+    align-items: center;
+  }
+}
+
+// dashboard 2
+.welcome-img {
+  margin-bottom: -65px;
+  margin-top: -15px;
+}
+
+.timeline {
+  position: relative;
+  .timeline-item {
+    position: relative;
+    height: 70px;
+    .time {
+      padding: 6px 16px 6px 0;
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .desc {
+      padding: 6px 16px;
+    }
+    .timline-border {
+      width: 1px;
+      height: 100%;
+      background-color: $borderColor;
+      flex-shrink: 0;
+    }
+    .point {
+      flex-direction: column;
+      .timeline-badge {
+        width: 12px;
+        height: 12px;
+        border-radius: 50px;
+        background-color: transparent;
+        flex-shrink: 0;
+        &.border-primary {
+          border: 2px solid $primary;
+        }
+        &.border-accent {
+          border: 2px solid $accent;
+        }
+        &.border-success {
+          border: 2px solid $success;
+        }
+        &.border-warning {
+          border: 2px solid $warning;
+        }
+        &.border-error {
+          border: 2px solid $error;
+        }
+      }
+
+      .timeline-border {
+        width: 1px;
+        height: 100%;
+        background-color: $borderColor;
+        flex-shrink: 0;
+      }
+    }
+    &:last-child {
+      .timeline-border {
+        display: none !important;
+      }
+    }
+  }
+}
+
+.most-visit-chart {
+  .apexcharts-bar-series.apexcharts-plot-series .apexcharts-series path {
+    clip-path: inset(0 0 5% 0 round 20px);
+  }
+}

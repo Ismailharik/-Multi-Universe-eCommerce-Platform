@@ -1,0 +1,194 @@
+<mat-sidenav-container
+  class="mainWrapper"
+  autosize
+  autoFocus
+  [ngClass]="{
+    'sidebarNav-mini': options.sidenavCollapsed && options.navPos !== 'top',
+    'sidebarNav-horizontal': options.horizontal,
+    cardBorder: options.cardBorder,
+    orange_theme: options.activeTheme == 'orange_theme',
+    blue_theme: options.activeTheme == 'blue_theme',
+    aqua_theme: options.activeTheme == 'aqua_theme',
+    purple_theme: options.activeTheme == 'purple_theme',
+    green_theme: options.activeTheme == 'green_theme',
+    cyan_theme: options.activeTheme == 'cyan_theme'
+  }"
+  [dir]="options.dir!"
+>
+  <!-- ============================================================== -->
+  <!-- Vertical Sidebar -->
+  <!-- ============================================================== -->
+
+  <mat-sidenav
+    #leftsidenav
+    [mode]="isOver ? 'over' : 'side'"
+    [opened]="
+      options.navPos === 'side' &&
+      options.sidenavOpened &&
+      !isOver
+    "
+    *ngIf="!options.horizontal"
+    (openedChange)="onSidenavOpenedChange($event)"
+    (closedStart)="onSidenavClosedStart()"
+    class="sidebarNav"
+  >
+    <div class="flex-layout">
+      <app-sidebar></app-sidebar>
+      <ng-scrollbar class="position-relative" style="height: 100%">
+        <mat-nav-list class="sidebar-list">
+          <app-nav-item
+            *ngFor="let item of navItems"
+            [item]="item"
+            (notify)="sidenav.toggle()"
+          >
+          </app-nav-item>
+        </mat-nav-list>
+      </ng-scrollbar>
+      <div class="p-24 m-t-auto profile-bar">
+        <div class="bg-light-accent d-flex align-items-center rounded p-16">
+          <img
+            src="/assets/images/profile/user-1.jpg"
+            class="rounded-circle"
+            width="40"
+          />
+          <div class="m-l-16">
+            <h5 class="mat-subtitle-2 f-w-600">{{connectedUser}}</h5>
+          </div>
+          <div class="m-l-auto">
+            
+            <a
+              mat-icon-button
+              [routerLink]="['/authentication/login']"
+              class="d-flex justify-content-center"
+            >
+              <i-tabler
+              (click)="logout()"
+                name="power"
+                class="text-primary icon-18 d-flex"
+              ></i-tabler>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <!-- ============================================================== -->
+  <!-- horizontal Sidebar -->
+  <!-- ============================================================== -->
+  <mat-sidenav
+      #leftsidenav
+      [mode]="'over'"
+      [opened]="options.sidenavOpened && !isTablet"
+      *ngIf="resView"
+      (openedChange)="onSidenavOpenedChange($event)"
+      (closedStart)="onSidenavClosedStart()"
+      class="sidebarNav"
+    >
+    <app-sidebar> </app-sidebar>
+    <ng-scrollbar class="position-relative" style="height: 100%">
+      <mat-nav-list class="sidebar-list">
+        <app-nav-item
+          *ngFor="let item of navItems"
+          [item]="item"
+          (notify)="sidenav.toggle()"
+        >
+        </app-nav-item>
+      </mat-nav-list>
+    </ng-scrollbar>
+    <div class="p-24 m-t-auto profile-bar">
+      <div class="bg-light-accent d-flex align-items-center rounded p-16">
+        <img
+          src="/assets/images/profile/user-1.jpg"
+          class="rounded-circle"
+          width="40"
+        />
+        <div class="m-l-16">
+          <h5 class="mat-subtitle-2 f-w-600">Mathew</h5>
+          <span class="f-s-12">Designer</span>
+        </div>
+        <div class="m-l-auto">
+          <a
+            mat-icon-button
+            [routerLink]="['/authentication/side-login']"
+            class="d-flex justify-content-center"
+          >
+            <i-tabler
+              name="power"
+              class="text-primary icon-18 d-flex"
+            ></i-tabler>
+          </a>
+        </div>
+      </div>
+    </div>
+    </mat-sidenav>
+  <!-- ============================================================== -->
+  <!-- Main Content -->
+  <!-- ============================================================== -->
+  <mat-sidenav-content class="contentWrapper" #content>
+    <!-- ============================================================== -->
+    <!-- VerticalHeader -->
+    <!-- ============================================================== -->
+    <ng-container>
+      <app-header
+        [showToggle]="!isOver"
+        (toggleCollapsed)="toggleCollapsed()"
+        (toggleMobileNav)="sidenav.toggle()"
+        (toggleMobileFilterNav)="filterNavRight.toggle()"
+      ></app-header>
+    </ng-container>
+
+
+    <main
+      class="pageWrapper"
+      [ngClass]="{
+        maxWidth: options.boxed
+      }"
+    >
+      <app-breadcrumb></app-breadcrumb>
+      <!-- ============================================================== -->
+      <!-- Outlet -->
+      <!-- ============================================================== -->
+      <router-outlet></router-outlet>
+      <div class="customizerBtn">
+        <button mat-fab color="primary" (click)="customizerRight.toggle()">
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
+    </main>
+  </mat-sidenav-content>
+
+  <mat-sidenav #customizerRight mode="over" position="end">
+    <app-customizer (optionsChange)="receiveOptions($event)"></app-customizer>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<!-- ------------------------------------------------------------------
+    Mobile Apps Sidebar
+    ------------------------------------------------------------------ -->
+<mat-drawer #filterNavRight mode="over" position="end" class="filter-sidebar">
+  <div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="branding">
+        <!-- <a href="/" *ngIf="options.theme === 'light'"> -->
+        <a href="/" >
+          <img width="240"
+            src="./assets/images/logos/logo.jpg"
+            class="align-middle m-2"
+            alt="logo"
+          />
+        </a>
+      </div>
+      <button
+        mat-icon-button
+        (click)="filterNavRight.toggle()"
+        class="d-flex justify-content-center"
+      >
+        <i-tabler name="x" class="icon-18 d-flex"></i-tabler>
+      </button>
+    </div>
+
+
+
+  </div>
+</mat-drawer>

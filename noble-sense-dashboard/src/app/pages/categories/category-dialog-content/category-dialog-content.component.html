@@ -1,0 +1,47 @@
+<h2 class="f-w-500 m-b-24" mat-dialog-title><strong>{{action}} Categrie</strong></h2>
+<mat-dialog-content *ngIf="action !== 'Delete'; else elseTemplate" style="max-width: 600px">
+    <form [formGroup]="categoryForm" >
+        <div class="d-flex align-items-center m-b-16">
+            <button mat-flat-button color="primary" class="m-l-16 input-file-button">
+                <input type="file" (change)="selectFile($event)" #fileInput />
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <input type="text" matInput required id="description" name="description" formControlName="description"
+                        placeholder="Description" />
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <input type="text" matInput required id="parent" name="parent" formControlName="parent"
+                        placeholder="Parent" />
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <input type="text" matInput required id="name" name="name"  formControlName="name"
+                        placeholder="Nom Du Categorie" />
+                </mat-form-field>
+            </div>
+        </div>
+        <button mat-flat-button (click)="doAction()" mat-flat-button color="primary" [disabled]="!categoryForm.valid">
+            {{action}}
+        </button>
+        <button mat-stroked-button color="warn" class="m-l-8" (click)="closeDialog()">
+            Cancel
+        </button>
+    </form>
+</mat-dialog-content>
+<ng-template #elseTemplate>
+    <div class="p-x-24">
+        <p>etes vous sur de supprimer <span class="f-w-600">{{categoryName}}</span> ?</p>
+    </div>
+    <div mat-dialog-actions class="p-x-24 p-b-24">
+        <button mat-button (click)="doAction()" mat-flat-button color="warn">
+            {{action}}
+        </button>
+        <button mat-button (click)="closeDialog()" class="m-l-8">Cancel</button>
+    </div>
+</ng-template>

@@ -1,0 +1,327 @@
+<div class="row justify-content-center p-24">
+  <div class="col-sm-6 col-lg-3" *ngFor="let statusCount of analysis">
+    <mat-card class="shadow-none">
+      <div
+        [ngClass]="{
+          'bg-light-success': statusCount.status === 'COMPLETED',
+          'bg-light-primary': statusCount.status === 'CREATED',
+          'bg-light-warning': statusCount.status === 'PROCESSING'
+        }"
+        class="p-30"
+        text-center
+        cursor-pointer
+        rounded
+      >
+        <h3
+          class="f-s-24 m-0 m-b-4"
+          [ngClass]="{
+            'text-success': statusCount.status === 'COMPLETED',
+            'text-primary': statusCount.status === 'CREATED',
+            'text-warning': statusCount.status === 'PROCESSING'
+          }"
+        >
+          {{ statusCount.count }}
+        </h3>
+        <h6
+          class="f-w-600 m-0 f-s-16"
+          [ngClass]="{
+            'text-success': statusCount.status === 'COMPLETED',
+            'text-primary': statusCount.status === 'CREATED',
+            'text-warning': statusCount.status === 'PROCESSING'
+          }"
+        >
+          {{ statusCount.status }}
+        </h6>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="row">
+      <div class="col-lg-3">
+        <mat-form-field appearance="outline" class="w-100 hide-hint">
+          <input
+            matInput
+            placeholder="Start Date"
+            [matDatepicker]="startDatePicker"
+            [(ngModel)]="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="startDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-3">
+        <mat-form-field appearance="outline" class="w-100 hide-hint">
+          <input
+            matInput
+            placeholder="End Date"
+            [matDatepicker]="endDatePicker"
+            [(ngModel)]="endDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="endDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Filtrer Par Categorie</mat-label>
+          <mat-select [(value)]="selectedOrderStatus">
+            <mat-option
+              *ngFor="let status of orderStatusArray"
+              [value]="status"
+              >{{ status }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-3 d-flex p-10">
+        <button mat-flat-button (click)="search()" color="primary">
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="row m-b-4">
+      <div class="col-lg-3">
+        <mat-form-field appearance="outline" class="w-100 hide-hint">
+          <input matInput placeholder="Chercher Par Order Id" #searchInput />
+          <mat-icon
+            matSuffix
+            (click)="searchById(searchInput.value)"
+            style="cursor: pointer"
+          >
+            <i-tabler name="search" class="icon-20"></i-tabler>
+          </mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!--END search bar and add employee button  -->
+
+<!-- START table  -->
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="table-responsive">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        multiTemplateDataRows
+        class="w-100"
+        id="tableId"
+      >
+       
+        <!-- User Name -->
+        <ng-container matColumnDef="fullName">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Full Name</th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.user.fullName }}
+          </td>
+        </ng-container>
+        <!-- User Name -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Phone</th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.user.phone }}
+          </td>
+        </ng-container>
+
+        <!-- Order Date -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Date
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.date | date:"dd/MM/yyyy" }}
+          </td>
+        </ng-container>
+        <!-- totalPrice -->
+        <ng-container matColumnDef="totalPrice">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Price
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.totalPrice }}
+          </td>
+        </ng-container>
+
+        <!-- shipCost -->
+        <ng-container matColumnDef="shipCost">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Ship Cost
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.shipCost }}
+          </td>
+        </ng-container>
+
+        <!-- country-->
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Country
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.country }}
+          </td>
+        </ng-container>
+   
+        <!-- address -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Address
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.address }}
+          </td>
+        </ng-container>
+
+
+
+
+
+
+        <!-- Order Note -->
+        <ng-container matColumnDef="orderNote">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Order Note
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            {{ element.orderNote }}
+          </td>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="orderStatus">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Status
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            <span
+              class="p-x-8 p-y-4 f-w-600 rounded-pill f-s-12"
+              [ngClass]="{
+                'bg-primary': element.orderStatus === 'CREATED',
+                'bg-error': element.orderStatus === 'PROCESSING',
+                'bg-success': element.orderStatus === 'COMPLETED'
+              }"
+            >
+              {{ element.orderStatus }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Ations -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Action
+          </th>
+          <td mat-cell *matCellDef="let element" class="action-link">
+            <a
+              (click)="openDialog('Update', element)"
+              class="m-r-10 cursor-pointer"
+              
+            >
+              <i-tabler name="edit" class="icon-18"></i-tabler
+            ></a>
+            <a
+              (click)="openDialog('Delete', element)"
+              class="m-r-10 cursor-pointer"
+            
+            >
+              <i-tabler name="trash" class="icon-18"></i-tabler>
+            </a>
+            <!--<button mat-raised-button color="primary" (click)="downloadOrdersAsPDF(element)">PDF</button>-->
+          </td>
+        </ng-container>
+
+        <!-- Expanded Detail Row -->
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div *ngIf="expandedElement === element">
+              <!-- Nested Table Here -->
+              <table
+                mat-table
+                [dataSource]="element.orderItems"
+                class="nested-table"
+              >
+                <!-- Nested Table Columns -->
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef>Product</th>
+                  <td mat-cell *matCellDef="let item" style="max-width: 500px">
+                    {{ item.product?.title }}
+                  </td>
+                </ng-container>
+                <!-- Nested Table Columns -->
+                <ng-container matColumnDef="quantity">
+                  <th mat-header-cell *matHeaderCellDef>Quantity</th>
+                  <td mat-cell *matCellDef="let item">
+                    {{ item.quantity }}
+                  </td>
+                </ng-container>
+               
+                <!-- Nested Table Columns -->
+                <ng-container matColumnDef="productPrice">
+                  <th mat-header-cell *matHeaderCellDef>Price</th>
+                  <td mat-cell *matCellDef="let item">
+                    {{ item.product?.price }}
+                  </td>
+                </ng-container>
+                  <!-- Nested Table Columns -->
+                  <ng-container matColumnDef="discount">
+                    <th mat-header-cell *matHeaderCellDef>Discount</th>
+                    <td mat-cell *matCellDef="let item">
+                      {{ item.product?.discount }}
+                    </td>
+                  </ng-container>
+
+                <!-- Nested Table Row Definitions -->
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="nestedDisplayedColumns"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: nestedDisplayedColumns"
+                ></tr>
+              </table>
+            </div>
+          </td>
+          
+        </ng-container>
+        <!-- Table Headers and Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          [class.expanded-row]="expandedElement === row"
+          (click)="expandedElement = expandedElement === row ? null : row"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          [class.detail-row]="expandedElement != row"
+        ></tr>
+            
+      </table>
+      
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 15]"
+        [length]="orderPage.totalPages * orderPage.size"
+        [pageSize]="orderPage.size"
+        [pageIndex]="orderPage.page"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

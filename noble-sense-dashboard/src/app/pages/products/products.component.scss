@@ -1,0 +1,123 @@
+/* Style the delete icon */
+td {
+  max-width: 200px;
+}
+td:first-child {
+  max-width: 300px;
+  overflow-x: scroll;
+}
+
+.material-icons {
+  font-size: 24px;
+}
+
+.custom-button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+// image config
+/* Style the full-screen image display */
+.full-screen-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style the close button */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Hide the close button by default */
+.close-button {
+  display: none;
+}
+
+/* Show the close button when the full-screen image is displayed */
+.full-screen-image:hover .close-button {
+  display: block;
+}
+
+/* Make the full-screen image responsive */
+.full-screen-image img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+// .compact-cell{
+//     // max-width: 55px;
+// }
+
+// for expended table
+.detail-row {
+  height: 0;
+  overflow: hidden;
+  display: none;
+}
+
+.expanded-row {
+  background-color: #f5f5f5; /* or any other color to indicate expansion */
+}
+
+.detail-table {
+  // width: 50%; /* Ensure the table uses the full width of its container */
+  background-color: #fff; /* Set a clean background */
+  border-collapse: collapse; /* Remove space between borders */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-top: 20px; /* Space from the main table */
+}
+
+.detail-table th,
+.detail-table td {
+  padding: 12px; /* Spacing inside cells */
+  border: 1px solid #ddd; /* Light border for each cell */
+}
+
+.detail-table th {
+  background-color: #f9f9f9; /* Light grey background for headers */
+  color: #333; /* Dark color for text for better readability */
+  width: 40%; /* Allocate width to headers */
+  text-align: left; /* Align header text to the left */
+}
+
+.detail-table td {
+  text-align: left; /* Align values to the right for a clear differentiation */
+  color: #666; /* Slightly lighter text for values */
+}
+
+.detail-table tr:hover {
+  background-color: #f1f1f1; /* Hover effect for each row */
+}
+
+.detail-view {
+  width: 100%;
+  margin-top: 15px; /* Additional spacing from the above content */
+  border-collapse: collapse; /* Ensure borders are nicely laid out */
+}
+
+.detail-view th,
+.detail-view td {
+  border-bottom: 1px solid #ddd; /* Horizontal border for separation */
+}
+
+/* Ensure text wraps in table cells */
+.detail-view td {
+    white-space: normal; /* Overrides the default nowrap */
+    word-wrap: break-word; /* Allows long words to be broken and wrapped */
+  }
+  

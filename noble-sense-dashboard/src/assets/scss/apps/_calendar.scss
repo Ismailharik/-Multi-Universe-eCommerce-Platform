@@ -1,0 +1,30 @@
+.cal-event-action {
+  text-decoration: none;
+  margin-left: 5px;
+  color: $white;
+}
+
+.cal-month-view {
+  background-color: transparent !important;
+}
+
+.cal-month-view .cal-open-day-events {
+  background-color: $darkhoverbgcolor !important;
+}
+
+.cal-month-view .cal-day-badge {
+  background-color: $primary !important;
+}
+
+.cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+  color: $primary !important;
+}
+
+// ticket
+.max-text {
+  max-width: 250px;
+  line-height: 1.57;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

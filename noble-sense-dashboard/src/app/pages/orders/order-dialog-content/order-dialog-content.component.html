@@ -1,0 +1,37 @@
+<h2 class="f-w-500 m-b-24" mat-dialog-title><strong>{{action}} Order Status</strong></h2>
+<mat-dialog-content *ngIf="action !== 'Delete'; else elseTemplate" style="max-width: 600px">
+<form [formGroup]="orderForm">
+        <div class="d-flex align-items-center m-b-16" style="width: 400px;">
+            <strong > Order Id: {{orderId}}</strong><br>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Change order Status</mat-label>
+                    <mat-select formControlName="orderStatus">
+                        <mat-option [value]="orderStatus.CREATED">{{orderStatus.CREATED}}</mat-option>
+                        <mat-option [value]="orderStatus.PROCESSING">{{orderStatus.PROCESSING}}</mat-option>
+                        <mat-option [value]="orderStatus.COMPLETED">{{orderStatus.COMPLETED}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <button mat-flat-button (click)="doAction()" mat-flat-button color="primary" [disabled]="!orderForm.valid">
+            {{action}}
+        </button>
+        <button mat-stroked-button color="warn" class="m-l-8" (click)="closeDialog()">
+            Cancel
+        </button>
+    </form>
+</mat-dialog-content>
+<ng-template #elseTemplate>
+    <div class="p-x-24">
+        <p>Sure to delete <span class="f-w-600">{{orderId}}</span> ?</p>
+    </div>
+    <div mat-dialog-actions class="p-x-24 p-b-24">
+        <button mat-button (click)="doAction()" mat-flat-button color="warn">
+            {{action}}
+        </button>
+        <button mat-button (click)="closeDialog()" class="m-l-8">Cancel</button>
+    </div>
+</ng-template>

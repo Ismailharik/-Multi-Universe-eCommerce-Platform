@@ -1,0 +1,58 @@
+/* Style the delete icon */
+.material-icons {
+    font-size: 24px;
+    /* Adjust icon size as needed */
+    color: red;
+    /* Change the color of the delete icon */
+
+}
+
+.delete-button {
+    background-color: white;
+    border: none;
+}
+
+// image config
+/* Style the full-screen image display */
+.full-screen-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the close button */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Hide the close button by default */
+.close-button {
+    display: none;
+}
+
+/* Show the close button when the full-screen image is displayed */
+.full-screen-image:hover .close-button {
+    display: block;
+}
+
+/* Make the full-screen image responsive */
+.full-screen-image img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* Style the delete button (keep it as before) */
+/* ... */

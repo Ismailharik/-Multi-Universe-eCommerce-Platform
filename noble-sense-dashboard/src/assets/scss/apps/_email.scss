@@ -1,0 +1,13 @@
+.ngx-pagination {
+  margin-bottom: 15px !important;
+  .current {
+    background: $primary !important;
+    border-radius: $border-radius;
+  }
+  a {
+    border-radius: $border-radius !important;
+  }
+  button {
+    border-radius: $border-radius !important;
+  }
+}

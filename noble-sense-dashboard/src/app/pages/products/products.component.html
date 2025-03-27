@@ -1,0 +1,303 @@
+<!--Start search bar and add employee button  -->
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="row justify-content-between">
+      <div class="col-lg-3" *ngIf="categoryPage">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Filtrer Par Catégorie</mat-label>
+          <mat-select
+            [(value)]="selectedCategoryId"
+            (selectionChange)="onCategorySelectionChange()"
+          >
+            <mat-option
+              *ngFor="let category of categoryPage.categories"
+              [value]="category.id"
+              >{{ category.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4 d-flex align-items-center justify-content-end">
+        <button mat-flat-button (click)="openDialog('Add', {})" color="primary">
+          Ajouter Produit
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!--END search bar and add employee button  -->
+
+<!-- START table  -->
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="table-responsive">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="w-100"
+        multiTemplateDataRows
+      >
+        <ng-container matColumnDef="image">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 f-s-14 mat-subtitle-1 p-l-0"
+          >
+            Images
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-l-0">
+            <div class="d-flex align-items-center">
+              <div *ngIf="element.imageURLs as urls" class="image-container">
+                <img
+                  [src]="urls[0]"
+                  alt="product image"
+                  class="rounded"
+                  width="70"
+                  height="70"
+                  (click)="expandImage($event, urls[0])"
+                />
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Title
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        </ng-container>
+        <!-- Parent Column -->
+        <!-- <ng-container matColumnDef="parent">
+        <th mat-header-cell *matHeaderCellDef> Parent </th>
+        <td mat-cell *matCellDef="let element"> {{element.parent}} </td>
+    </ng-container> -->
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-s-16 f-w-600 compact-cell"
+          >
+            Quantity
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14 text-center">
+            {{ element.quantity }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="offerDate">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Offer Date
+          </th>
+          <td mat-cell *matCellDef="let element" class="f-s-14">
+            <span
+              *ngIf="element.offerDate?.startDate && element.offerDate?.endDate"
+            >
+              {{ element.offerDate?.startDate | date : "dd/MM/yyyy" }} -
+              {{ element.offerDate?.endDate | date : "dd/MM/yyyy" }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="tags">
+        <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600"> Tags </th>
+        <td mat-cell *matCellDef="let element" class="f-s-14"> 
+        <span *ngFor="let tag of element.tags; let index = index"> {{tag}} </span></td>
+    </ng-container> -->
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price" class="f-s-16 f-w-600">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Price
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+        </ng-container>
+
+        <!-- Discount Column -->
+        <ng-container matColumnDef="discount" class="f-s-16 f-w-600">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Discount
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.discount }}</td>
+        </ng-container>
+
+        <!-- START Expanded Detail Row -->
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div *ngIf="expandedElement === element" class="detail-table">
+              <!-- Start Details View -->
+              <table class="detail-view">
+                <tr>
+                  <th>SKU</th>
+                  <td>{{ element.sku }}</td>
+                </tr>
+                <tr>
+                  <th>Title</th>
+                  <td>{{ element.title }}</td>
+                </tr>
+                <tr>
+                  <th>Price</th>
+                  <td>{{ element.price }}</td>
+                </tr>
+                <tr>
+                  <th>Quantity</th>
+                  <td>{{ element.quantity }}</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td>{{ element.status }}</td>
+                </tr>
+                <tr>
+                  <th>Product Type</th>
+                  <td>{{ element.productType }}</td>
+                </tr>
+                <tr>
+                  <th>Description</th>
+                  <td>{{ element.description }}</td>
+                </tr>
+                <tr>
+                  <th>Additional Information</th>
+
+                  <td>
+                    <div
+                      *ngIf="element.additionalInformation as additionalInfo"
+                    >
+                      <!-- Assuming additionalInformation is now an object or array -->
+
+                      <div *ngFor="let info of additionalInfo">
+                        <p>
+                          <b> {{ info.key }}: </b> {{ info.value }}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Featured</th>
+                  <td>{{ element.featured ? "Yes" : "No" }}</td>
+                </tr>
+                <tr>
+                  <th>Sizes</th>
+                  <td>
+                    <span *ngFor="let size of element.sizes">{{ size }}, </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Discount</th>
+                  <td>{{ element.discount }}</td>
+                </tr>
+                <tr>
+                  <th>Sell Count</th>
+                  <td>{{ element.sellCount }}</td>
+                </tr>
+                <tr>
+                  <th>Images</th>
+                  <td class="p-l-0">
+                    <div class="d-flex align-items-center">
+                      <div
+                        *ngFor="let url of element.imageURLs; let index = index"
+                        class="image-container"
+                      >
+                        <img
+                          [src]="url"
+                          alt="users"
+                          class="rounded m-l-10"
+                          width="70"
+                          height="70"
+                          (click)="expandImage($event, url)"
+                        />
+                        <!-- Delete Image -->
+                        <button
+                          (click)="confirmDeleteImage(element, url)"
+                          class="custom-button"
+                        >
+                          <i class="material-icons" style="color: red"
+                            >delete</i
+                          >
+                        </button>
+                      </div>
+
+                      <!-- Add Image -->
+                      <button
+                        (click)="triggerFileInput(element.id)"
+                        class="custom-button"
+                      >
+                        <i class="material-icons">add</i>
+                      </button>
+                      <input
+                        type="file"
+                        #fileInput
+                        hidden
+                        (change)="addImageToProduct($event)"
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Video URL</th>
+                  <td>
+                    <a href="{{element.videoId}}"> {{ element.videoId }}</a>
+                  </td>
+                </tr>
+              </table>
+              <!-- End Details View -->
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- END Expanded Detail Row -->
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+            Action
+          </th>
+          <td mat-cell *matCellDef="let element" class="action-link">
+            <a
+              (click)="openDialog('Update', element)"
+              class="m-r-10 cursor-pointer"
+            >
+              <i-tabler name="edit" class="icon-18"></i-tabler
+            ></a>
+            <a (click)="deleteProduct(element.id)" class="m-r-10 cursor-pointer">
+              <i-tabler name="trash" class="icon-18"></i-tabler>
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Table Headers and Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          [class.expanded-row]="expandedElement === row"
+          (click)="expandedElement = expandedElement === row ? null : row"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          [class.detail-row]="expandedElement != row"
+        ></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 15]"
+        [length]="productsPage.totalPages * productsPage.size"
+        [pageSize]="productsPage.size"
+        [pageIndex]="productsPage.page"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+    <!-- Show full screen image -->
+    <div class="full-screen-image" *ngIf="showFullScreen">
+      <span class="close-button" (click)="closeImage()">×</span>
+      <img [src]="fullScreenImagePath" alt="Full Screen" />
+    </div>
+  </mat-card-content>
+</mat-card>

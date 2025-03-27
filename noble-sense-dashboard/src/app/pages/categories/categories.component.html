@@ -1,0 +1,80 @@
+<!--Start search bar and add employee button  -->
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24 d-flex justify-content-end">
+            <div class="col-lg-2 ">
+                <button mat-flat-button (click)="openDialog('Add', {})" color="primary">
+                    Ajouter Categrie
+                </button>
+            </div>
+    </mat-card-content>
+</mat-card>
+<!--END search bar and add employee button  -->
+
+
+<!-- START table  -->
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+        <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" class="w-100">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14 mat-subtitle-1 p-l-0">
+                        Produit
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="p-l-0">
+                        <div class="d-flex align-items-center">
+                            <img *ngIf="element.img" [src]="element.img"  alt="cat img" width="48" class="rounded"(click)="expandImage($event, element.img)" />
+                            <button (click)="confirmDeleteImage(element,element.img)" class="delete-button">
+                                <i  *ngIf="element.img" class="material-icons">delete</i> <!-- Material Icons delete icon -->
+                            </button>
+                            <div class="m-l-16">
+                                <h6 class="f-s-14 mat-subtitle-1 f-w-600">
+                                    {{ element.name }}
+                                </h6>
+                                <span class="mat-body-1 f-s-12">
+                                    {{ element.name }}
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Description</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14" style="max-width: 400px">{{ element.description }}</td>
+                </ng-container>
+                <ng-container matColumnDef="parent">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Parent</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14" style="max-width: 400px">{{ element.parent }}</td>
+                </ng-container>
+            <ng-container matColumnDef="numberOfProducts">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Number Of Products</th>
+                    <td mat-cell *matCellDef="let element" class="f-s-14" style="max-width: 400px">{{ element.numberOfProducts }}</td>
+                </ng-container>
+                <!-- Ations -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+                        Action
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="action-link">
+                        <a (click)="openDialog('Update', element)" class="m-r-10 cursor-pointer"><i-tabler name="edit"
+                                class="icon-18"></i-tabler></a>
+                        <a (click)="openDialog('Delete', element)" class="m-r-10 cursor-pointer">
+                            <i-tabler name="trash" class="icon-18"></i-tabler>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[ 5,10, 15]" [length]="categoryPage.totalPages*categoryPage.size "
+                [pageSize]="categoryPage.size" [pageIndex]="categoryPage.page" (page)="onPageChange($event)"
+                showFirstLastButtons></mat-paginator>
+        </div>
+
+        <!-- Show full screen image -->
+        <div class="full-screen-image" *ngIf="showFullScreen">
+            <span class="close-button" (click)="closeImage()">×</span>
+            <img [src]="fullScreenImagePath" alt="Full Screen" />
+        </div>
+    </mat-card-content>
+</mat-card>
