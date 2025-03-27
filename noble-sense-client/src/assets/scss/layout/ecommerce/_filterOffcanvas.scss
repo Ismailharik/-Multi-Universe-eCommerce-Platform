@@ -1,0 +1,107 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.17 Filter Offcanvas CSS
+/*----------------------------------------*/
+
+
+.#{$theme-prifix}-filter-offcanvas{
+    $self : &;
+    &-area{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 340px;
+        height: 100%;
+        @include transform(translateX(calc(-100% - 80px)));
+        background: var(--tp-common-white) none repeat scroll 0 0;
+        @include tp-transition-mul((all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86)));
+        z-index: 99999;
+        
+        overflow-y: scroll;
+        overscroll-behavior-y: contain;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none; /* for Chrome, Safari, and Opera */
+        }
+        &.offcanvas-opened{
+            @include transform(translateX(0));
+            opacity: 1;
+        }
+
+        @media(max-width: 380px){
+            width: 100%;
+        }
+
+        
+    }
+    &-right{
+        @include transform(translateX(calc(100% + 80px)));
+        left: auto;
+        right: 0;
+    }
+    &-wrapper{
+        position: relative;
+        padding: 120px 30px 35px;
+        z-index: 1;
+        min-height: 100%;
+
+    }
+    &-close{
+        &-btn{
+            background: #151515;
+            padding: 25px 30px;
+            font-size: 18px;
+            color: rgba($color: $white, $alpha: .7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+
+            &:hover{
+                color: var(--tp-common-white);
+            }
+        }
+    }
+}
+
+.#{$theme-prifix}-filter-dropdown{
+    &-wrapper{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 11;
+        border: 1px solid rgba(85, 88, 91, 0.06);
+        box-shadow: 0px 40px 60px rgba(1, 15, 28, 0.1);
+        background-color: var(--tp-common-white);
+        padding: 35px 40px 0;
+        padding-right: 75px;
+        visibility: hidden;
+        opacity: 0;
+        transform-origin: top;
+        @include tp-transition(all, .2s);
+        @include transform(perspective(300px) rotateX(-18deg));
+
+        @media #{$sm, $xs}{
+            padding: 25px 20px 0;
+        }
+
+        &.filter-dropdown-opened{
+            visibility: visible;
+            opacity: 1;
+            @include transform(perspective(300px) rotateX(0deg));
+        }
+
+        & .tp-shop-widget{
+            margin-right: 25px;
+
+            @media #{$md, $sm, $xs}{
+                margin-right: 0;
+            }
+        }
+    }
+}

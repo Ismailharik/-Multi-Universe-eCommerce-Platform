@@ -1,0 +1,34 @@
+
+<section class="tp-product-category pt-60 pb-15">
+  <div class="container">
+    <div class="row row-cols-xl-5 row-cols-lg-5 row-cols-md-4 align-items-center justify-content-center">
+      <div *ngFor="let catgory of category_items" class="col"> 
+        <div class="tp-product-category-item text-center mb-40">
+          <div class="tp-product-category-thumb fix">
+            <a
+              [routerLink]="['/shop']"
+              [queryParams]="{
+                category: catgory.parent.toLowerCase().split(' ').join('-')
+              }"
+            >
+              <img [src]="catgory.img" alt="product-category" />
+            </a>
+          </div>
+          <div class="tp-product-category-content">
+            <h3 class="tp-product-category-title">
+              <a
+                [routerLink]="['/shop']"
+                [queryParams]="{
+                  category: catgory.parent.toLowerCase().split(' ').join('-')
+                }"
+                >
+                {{ catgory.name }}
+              </a>
+            </h3>
+            <p>{{ catgory.numberOfProducts }} Product</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

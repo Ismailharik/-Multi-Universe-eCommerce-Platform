@@ -1,0 +1,28 @@
+<section class="tp-search-area tp-search-style-brown" [class.opened]="utilsService.isSearchOpen">
+  <div class="container">
+     <div class="row">
+        <div class="col-xl-12">
+           <div class="tp-search-form">
+              <div class="tp-search-close text-center mb-20">
+                 <button (click)="utilsService.handleSearchOpen()" class="tp-search-close-btn tp-search-close-btn"></button>
+              </div>
+              <form (ngSubmit)="handleSearchSubmit()">
+                 <div class="tp-search-input mb-10">
+                    <input type="text" placeholder="Search for product..." [(ngModel)]="searchText" name="searchText">
+                    <button type="submit"><i class="flaticon-search-1"></i></button>
+                 </div>
+                 <div class="tp-search-category">
+                    <span>Search by : </span>
+                    <a (click)="handleProductType(c)" *ngFor="let c of categories;let i = index" class="cursor-pointer" [class.active]="c === productType">
+                       {{c}}
+                      <span *ngIf="i < categories.length - 1">, </span>
+                    </a>
+                 </div>
+              </form>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
+
+<div (click)="utilsService.handleSearchOpen()" class="body-overlay" [class.opened]="utilsService.isSearchOpen"></div>

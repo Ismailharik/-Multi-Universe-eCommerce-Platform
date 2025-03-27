@@ -1,0 +1,68 @@
+<div [ngClass]="['cartmini__area tp-all-font-roboto', cartService.isCartOpen ? 'cartmini-opened' : '']">
+  <div class="cartmini__wrapper d-flex justify-content-between flex-column">
+    <div class="cartmini__top-wrapper">
+      <div class="cartmini__top p-relative">
+        <div class="cartmini__top-title">
+          <h4>Shopping cart</h4>
+        </div>
+        <div class="cartmini__close">
+          <button (click)="cartService.handleOpenCartSidebar()" type="button" class="cartmini__close-btn cartmini-close-btn">
+            <i class="fal fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="cartmini__shipping">
+        <!-- Replace with Angular component for cart progress -->
+      </div>
+      <div *ngIf="cartService.getCartProducts().length > 0" class="cartmini__widget">
+        <div *ngFor="let item of cartService.getCartProducts()" class="cartmini__widget-item">
+          <div class="cartmini__thumb">
+            <a [routerLink]="['/shop/shop-details', item.id]">
+              <img [src]="item.imageURLs[0]" alt="product img" width="70" height="60" />
+            </a>
+          </div>
+          <div class="cartmini__content">
+            <h5 class="cartmini__title">
+              <a [routerLink]="['/shop/shop-details', item.id]">{{ item.title }}</a>
+            </h5>
+            <div class="cartmini__price-wrapper">
+              <span *ngIf="item.discount > 0 && item.orderQuantity" class="cartmini__price">
+                {{
+                  (
+                    (item.price - (item.price * item.discount) / 100) * item.orderQuantity
+                  ).toFixed(2)
+                }}
+              </span>
+              <span *ngIf="!item.discount && item.orderQuantity" class="cartmini__price">
+                ${{ (item.price * item.orderQuantity).toFixed(2) }}
+              </span>
+              <span class="cartmini__quantity">{{ ' ' }}x{{ item.orderQuantity }}</span>
+            </div>
+          </div>
+          <a (click)="cartService.removeCartProduct(item)" class="cartmini__del cursor-pointer">
+            <i class="fa-regular fa-xmark"></i>
+          </a>
+        </div>
+      </div>
+      <!-- if no item in cart  -->
+      <div *ngIf="cartService.getCartProducts().length === 0" class="cartmini__empty text-center">
+        <img src="/assets/img/product/cartmini/empty-cart.png" alt="empty-cart-img" />
+        <p>Your Cart is empty</p>
+        <a routerLink="/shop" class="tp-btn">Go to Shop</a>
+      </div>
+    </div>
+    <div *ngIf="cartService.getCartProducts().length > 0" class="cartmini__checkout">
+      <div class="cartmini__checkout-title mb-30">
+        <h4>Subtotal:</h4>
+        <span>${{ cartService.totalPriceQuantity().total.toFixed(2) }}</span>
+      </div>
+      <div class="cartmini__checkout-btn">
+        <a routerLink="/cart" (click)="cartService.handleOpenCartSidebar()" class="tp-btn mb-10 w-100">view cart</a>
+        <a routerLink="/checkout" (click)="cartService.handleOpenCartSidebar()" class="tp-btn tp-btn-border w-100">checkout</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- overlay start  -->
+<div (click)="cartService.handleOpenCartSidebar()" [ngClass]="['body-overlay', cartService.isCartOpen ? 'opened' : '']"></div>
+<!-- overlay end  -->

@@ -1,0 +1,158 @@
+<!-- header start -->
+<app-header-three></app-header-three>
+<!-- header end -->
+
+
+<!-- hero banner start -->
+<app-hero-banner-three></app-hero-banner-three>
+<!-- hero banner end -->
+
+<!-- category area start -->
+<app-beauty-category></app-beauty-category>
+<!-- category area end -->
+
+<!--Start Detailed Image -->
+
+<!-- <img src="/assets/img/banner/houses-image-details.jpg" alt="Section Separator" class="section-separator" (click)="openFullScreenImage('/assets/img/banner/houses-image-details.jpg')"> -->
+<img src="/assets/img/banner/houses-image-details.jpg" alt="Section Separator" class="section-separator">
+
+
+ <!-- Full-screen image component -->
+<!-- <app-fullscreen-image [imageSrc]="selectedImage"></app-fullscreen-image> -->
+<!--Start Detailed Image -->
+
+<!-- featured area start -->
+<section class="tp-featured-product-area pt-70 pb-150">
+  <div class="container">
+     <div class="row gx-0" style="justify-content: space-evenly;">
+        <div *ngFor="let item of featured_data" class="col-lg-4 col-md-6">
+           <div class="tp-featured-item-3 text-center">
+              <div class="tp-featured-thumb-3 d-flex align-items-end justify-content-center mt-10" *ngIf="item.img">
+                 <img [src]="item.img" alt="feature-img">
+              </div>
+              <div class="tp-featured-content-3">
+                 <h3 class="tp-featured-title-3">
+                    <a routerLink="/shop" [innerHTML]="item.title"></a>
+                 </h3>
+                 <p>{{item.subtitle}}</p>
+                 <div class="tp-featured-price-3">
+                    <span>Apartir de ${{item.save}}</span>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
+<!-- featured area end -->
+
+<!-- product area start -->
+<!-- <section class="tp-product-area grey-bg-8 pt-95 pb-80">
+  <div class="container">
+     <div class="row align-items-end">
+        <div class="col-lg-6 col-md-8">
+           <div class="tp-section-title-wrapper-3 mb-55">
+              <span class="tp-section-title-pre-3">Shop by Category</span>
+              <h3 class="tp-section-title-3">Best sellers in beauty</h3>
+           </div>
+        </div>
+        <div class="col-lg-6 col-md-4">
+           <div class="tp-product-more-3 text-md-end mb-65">
+              <a routerLink="/shop" class="tp-btn">
+                 Shop All Products
+                 <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.9994 4.99981L1.04004 4.99981" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6.98291 1L10.9998 4.99967L6.98291 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                 </svg>
+              </a>
+           </div>
+        </div>
+     </div>
+     <div class="row">
+        <div *ngFor="let item of products" class="col-lg-3 col-md-4 col-sm-6">
+           <app-product-item-three [product]="item"></app-product-item-three>
+        </div>
+     </div>
+  </div>
+</section> -->
+<!-- product area end -->
+
+<!-- collection area start -->
+<section class="tp-collection-area pt-120">
+  <div class="container">
+     <div class="row gx-2 gy-2 gy-md-0">
+        <div class="col-xl-7 col-md-6">
+           <div class="tp-collection-item tp-collection-height grey-bg p-relative z-index-1 fix">
+              <div class="tp-collection-thumb include-bg include-bg transition-3" style="background-image: url(/assets/img/banner/houses-image-1.jpg);"></div>
+              <div class="tp-collection-content">
+                 <span>Wooden Houses Collection</span>
+                 <h3 class="tp-collection-title">
+                    <a routerLink="/shop">High-quality wooden house<br>  with modern design </a>
+                 </h3>
+                 <div class="tp-collection-btn">
+                    <a routerLink="/shop" class="tp-btn">
+                       Discover Now
+                       <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10.9994 4.99981L1.04004 4.99981" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M6.98291 1L10.9998 4.99967L6.98291 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                    </a>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col-xl-5 col-md-6">
+           <div class="tp-collection-item tp-collection-height grey-bg p-relative z-index-1 fix">
+              <div class="tp-collection-thumb has-overlay include-bg transition-3" style="background-image: url(/assets/img/banner/houses-image-2.jpg);">
+              </div>
+              <div class="tp-collection-content-1">
+                 <h3 class="tp-collection-title-1">
+                    <a routerLink="/shop">Modern  <br>Wooden House </a>
+                 </h3>
+                 <div class="tp-collection-btn-1">
+                    <a routerLink="/shop" class="tp-link-btn-line">Wooden Houses Collection</a>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <div class="row justify-content-center">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+           <div class="tp-collection-offer-wrapper mt-20">
+              <p>Discover our Products <span>75% Extra Discount</span> for your...</p>
+           </div>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-5">
+           <div class="tp-collection-countdown d-flex align-items-center justify-content-center justify-content-md-start ml-20 mt-20">
+              <div class="tp-product-countdown" data-countdown data-date="Sep 30 2024 20:20:22">
+                 <div class="tp-product-countdown-inner">
+                    <app-countdown-timer [date]="'Sep 30 2024 20:20:22'"></app-countdown-timer>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
+<!-- collection area end -->
+
+<!-- all product items start -->
+<app-beauty-all-products></app-beauty-all-products>
+<!-- all product items end -->
+
+<!-- product special area start -->
+<app-beauty-special-products></app-beauty-special-products>
+<!-- product special area end -->
+
+
+<!-- testimonial start -->
+<app-beauty-testimonial></app-beauty-testimonial>
+<!-- testimonial end -->
+
+
+
+
+
+ <!-- footer start -->
+ <app-footer-one [style_3]="true"></app-footer-one>
+ <!-- footer end -->

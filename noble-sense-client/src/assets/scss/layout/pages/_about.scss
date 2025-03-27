@@ -1,0 +1,109 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.2 About css
+/*----------------------------------------*/
+
+
+.#{$theme-prifix}-about{
+    &-wrapper{
+        @media #{$lg}{
+            padding-left: 35px;
+            padding-top: 15px;
+            padding-right: 0;
+        }
+        @media #{$md, $sm, $xs}{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        @media #{$xs}{
+            margin-right: 0;
+            margin-top: 50px;
+        }
+    }
+    &-thumb{
+        &-2{
+            position: absolute;
+            bottom: -60px;
+            right: -165px;
+
+            @media #{$md}{
+                right: 0;
+            }
+            @media #{$sm}{
+                right: -30px;
+            }
+            @media #{$xs}{
+                right: 0;
+            }
+
+            & img{
+                @media #{$xs}{
+                    width: 70%;
+                }
+            }
+        }
+    }
+    &-content{
+        @media #{$md, $sm, $xs}{
+            padding-left: 0;
+        }
+        & p{
+            font-size: 16px;
+            line-height: 1.62;
+            margin-bottom: 40px;
+
+            @media #{$sm, $xs}{
+                & br{
+                    display: none;
+                }
+            }
+        }
+    }
+    &-banner{
+        &-subtitle{
+            font-size: 14px;
+            color: var(--tp-theme-primary);
+            display: inline-block;
+        }
+        &-title{
+            font-size: 60px;
+            font-weight: 500;
+            line-height: 1.07;
+            margin-bottom: 50px;
+
+            @media #{$md}{
+                font-size: 45px;
+            }
+            @media #{$sm}{
+                font-size: 35px;
+            }
+            @media #{$xs}{
+                font-size: 30px;
+            }
+        }
+        &-thumb{
+            & img{
+                margin-bottom: 55px;
+            }
+        }
+        &-content{
+            padding-left: 110px;
+            padding-right: 110px;
+
+            @media #{$md}{
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+            @media #{$sm, $xs}{
+                padding-left: 0;
+                padding-right: 0;
+            }
+            & p{
+                font-size: 18px;
+                line-height: 1.56;
+                margin-bottom: 25px;
+            }
+        }
+    }
+}

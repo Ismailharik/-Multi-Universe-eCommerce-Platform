@@ -1,0 +1,13 @@
+<div class="tp-product-details-review-rating-item d-flex align-items-center">
+  <span>{{ star }} Star</span>
+  <div class="tp-product-details-review-rating-bar">
+    <span
+      [attr.data-width]="width + '%'"
+      [ngStyle]="{ 'width.%': width }"
+      class="tp-product-details-review-rating-bar-inner"
+    ></span>
+  </div>
+  <div class="tp-product-details-review-rating-percent">
+    <span>{{ width }}%</span>
+  </div>
+</div>

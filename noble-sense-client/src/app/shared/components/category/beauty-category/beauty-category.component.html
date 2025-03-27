@@ -1,0 +1,52 @@
+<section class="tp-category-area pt-95">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-lg-6 col-md-8">
+        <div class="tp-section-title-wrapper-3 mb-45">
+          <span class="tp-section-title-pre-3">Product Collection</span>
+          <h3 class="tp-section-title-3">Discover our products</h3>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-4">
+        <div class="tp-category-more-3 text-md-end mb-55">
+          <a [routerLink]="['/shop']" class="tp-btn">
+            Shop All Products
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.9994 4.99981L1.04004 4.99981" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.98291 1L10.9998 4.99967L6.98291 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+           </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let item of categoryItems" class="col-lg-4 col-sm-6">
+        <div class="tp-category-item-3 p-relative black-bg text-center z-index-1 fix mb-30">
+          <div [ngStyle]="{'background-image': 'url(' + item.img + ')'}" class="tp-category-thumb-3 include-bg"
+            (click)="openModal(item.img)">
+          </div>
+          <div class="tp-category-content-3 transition-3">
+            <h3 class="tp-category-title-3">
+              <a (click)="handleParentCategory(item.parent)" class="cursor-pointer">
+                {{ item.parent }}
+              </a>
+            </h3>
+            <span class="tp-categroy-ammount-3">
+              {{ item.products.length }} Products
+            </span>
+            <div class="tp-category-btn-3">
+              <a (click)="handleParentCategory(item.parent)" class="tp-link-btn tp-link-btn-2 cursor-pointer">
+                View Now
+                <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6.02116 5.99958L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-image-modal [imageSrc]="selectedImage"></app-image-modal>
+</section>

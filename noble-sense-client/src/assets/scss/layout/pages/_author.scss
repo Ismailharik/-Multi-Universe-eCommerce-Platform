@@ -1,0 +1,137 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.15 Author CSS
+/*----------------------------------------*/
+
+.#{$theme-prifix}-author{
+    &-bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @extend %bg-thumb;
+        z-index: -1;
+        mix-blend-mode: luminosity;
+    }
+
+    &-bg-overlay{
+        position: relative;
+        &::after{
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #010911, $alpha: .7);
+            z-index: -1;
+        }
+    }
+    &-wrapper{
+        padding: 140px 90px 115px 102px;
+
+        @media #{$lg}{
+            padding: 140px 70px 115px 60px;
+        }
+        @media #{$md}{
+            padding: 140px 90px 60px 102px;
+        }
+        @media #{$sm, $xs}{
+            padding: 40px ;
+        }
+    }
+    &-content{
+        & p{
+            font-size: 24px;
+            line-height: 1.42;
+            color: var(--tp-common-white);
+
+        }
+    }
+    &-info{
+        &-wrapper{
+            padding: 10px;
+            border-radius: 40px;
+            background-color: var(--tp-common-white);
+            min-width: 210px;
+            width: max-content;
+           
+        }
+        &-avater{
+            @include tp-root('div'){
+                & img{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
+        }  
+        &-title{
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 0;
+            line-height: 1;
+        }
+        &-designation{
+            font-size: 14px;
+            color: #55585B;
+        }
+    }
+    &-brand{
+        &-wrapper{
+            width: 340px;
+            margin-left: auto;
+            position: relative;
+            margin-right: 75px;
+            margin-top: 60px;
+
+            @media #{$md, $sm, $xs}{
+                margin-right: auto;
+                margin-top: 0;
+                margin-bottom: 70px;
+            }
+            @media #{$xs}{
+                width: 280px;
+            }
+
+            &::after,
+            &::before{
+                position: absolute;
+                content: '';
+                background-color: rgba($color: $white, $alpha: .2);
+            }
+            &::after{
+                top: 44%;
+                left: 0;
+                width: 100%;
+                height: 1px;
+            }
+            &::before{
+                left: 50%;
+                top: 0;
+                width: 1px;
+                height: calc(100% - 20px);
+            }
+        }
+        &-item{
+            flex: 0 0 auto;
+            width: 50%;
+            padding-top: 18px;
+            margin-bottom: 40px;
+        }
+    }
+    &-shape{
+        &-1{
+            position: absolute;
+            top: 50px;
+            left: -20px;
+            display: inline-block;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            @include tp-gradient((180deg, rgba(9, 137, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%));
+        }
+    }
+}

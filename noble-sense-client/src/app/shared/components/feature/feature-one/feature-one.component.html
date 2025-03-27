@@ -1,0 +1,17 @@
+<section class="tp-feature-area tp-feature-border-radius pb-70">
+  <div class="container">
+     <div class="row gx-1 gy-1 gy-xl-0">
+        <div *ngFor="let item of feature_items" class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+           <div class="tp-feature-item d-flex align-items-start">
+              <div class="tp-feature-icon mr-15">
+                <span [innerHTML]="sanitizeHtml(item.icon)"></span>
+              </div>
+              <div class="tp-feature-content">
+                 <h3 class="tp-feature-title">{{item.title}}</h3>
+                 <p>{{item.subtitle}}</p>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>

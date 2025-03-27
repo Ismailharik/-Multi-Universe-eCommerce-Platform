@@ -1,0 +1,47 @@
+<!-- header start -->
+<app-header-two [style_2]="true"></app-header-two>
+<!-- header end -->
+
+<main>
+  <!-- breadcrumb start -->
+  <app-breadcrumb-two title="Our Blog" subtitle="Blog"></app-breadcrumb-two>
+  <!-- breadcrumb end -->
+
+  <!-- postbox area start -->
+  <section class="tp-postbox-area pt-120 pb-120">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 col-lg-8">
+          <div class="tp-postbox-wrapper pr-50">
+            <ng-container
+              *ngFor="let item of blogs.slice(startIndex, endIndex);let i = index"
+            >
+              <app-blog-postbox-item [blog]="item"></app-blog-postbox-item>
+            </ng-container>
+            <div class="tp-blog-pagination mt-50">
+              <div class="tp-pagination">
+                <app-pagination-two
+                  [itemsPerPage]="4"
+                  [data]="blogs"
+                  (handlePaginate)="handlePagination($event)"
+                ></app-pagination-two>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-4">
+          <!-- blog sidebar start -->
+          <app-blog-sidebar></app-blog-sidebar>
+          <!-- blog sidebar end -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- postbox area end -->
+</main>
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->
+
+

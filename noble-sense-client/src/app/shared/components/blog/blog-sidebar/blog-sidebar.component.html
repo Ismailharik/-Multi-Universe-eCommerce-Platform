@@ -1,0 +1,98 @@
+<div class="tp-sidebar-wrapper tp-sidebar-ml--24">
+  <div class="tp-sidebar-widget mb-35">
+      <div class="tp-sidebar-search">
+        <form action="#">
+            <div class="tp-sidebar-search-input">
+              <input type="text" placeholder="Search...">
+              <button type="submit">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.11111 15.2222C12.0385 15.2222 15.2222 12.0385 15.2222 8.11111C15.2222 4.18375 12.0385 1 8.11111 1C4.18375 1 1 4.18375 1 8.11111C1 12.0385 4.18375 15.2222 8.11111 15.2222Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16.9995 17L13.1328 13.1333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              </button>
+            </div>
+        </form>
+      </div>
+  </div>
+
+  <!-- about -->
+  <div class="tp-sidebar-widget mb-35">
+      <h3 class="tp-sidebar-widget-title">About me</h3>
+      <div class="tp-sidebar-widget-content">
+        <div class="tp-sidebar-about">
+            <div class="tp-sidebar-about-thumb mb-25">
+              <a href="#">
+                  <img src="/assets/img/users/user-11.jpg" alt="">
+              </a>
+            </div>
+            <div class="tp-sidebar-about-content">
+              <h3 class="tp-sidebar-about-title">
+                  <a href="#">Ravi O'Leigh</a>
+              </h3>
+              <span class="tp-sidebar-about-designation">Photographer & Blogger</span>
+              <p>Lorem ligula eget dolor. Aenean massa. Cum sociis que penatibus magnis dis parturient</p>
+              <div class="tp-sidebar-about-signature">
+                  <img src="/assets/img/blog/signature/signature.png" alt="">
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <!-- about end -->
+
+  <!-- latest post start -->
+  <div class="tp-sidebar-widget mb-35">
+      <h3 class="tp-sidebar-widget-title">Latest Posts</h3>
+      <div class="tp-sidebar-widget-content">
+        <div class="tp-sidebar-blog-item-wrapper">
+            <div *ngFor="let item of latest_blogs" class="tp-sidebar-blog-item d-flex align-items-center">
+              <div class="tp-sidebar-blog-thumb">
+                  <a [routerLink]="['/pages/blog-details', item.id]">
+                    <img [src]="item.img" alt="blog-img">
+                  </a>
+              </div>
+              <div class="tp-sidebar-blog-content">
+                  <div class="tp-sidebar-blog-meta">
+                    <span>{{item.date}}</span>
+                  </div>
+                  <h3 class="tp-sidebar-blog-title">
+                    <a [routerLink]="['/pages/blog-details', item.id]">{{item.title.substring(0,20)}}...</a>
+                  </h3>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <!-- latest post end -->
+
+  <!-- categories start -->
+  <div class="tp-sidebar-widget widget_categories mb-35">
+      <h3 class="tp-sidebar-widget-title">Categories</h3>
+      <div class="tp-sidebar-widget-content">
+        <ul>
+            <li><a [routerLink]="['/pages/blog-grid']">Farming <span>(12)</span></a></li>
+            <li><a [routerLink]="['/pages/blog-grid']">Crisp Bread & Cake <span>(6)</span></a></li>
+            <li><a [routerLink]="['/pages/blog-grid']">Milk & Meat <span>(2)</span></a></li>
+            <li><a [routerLink]="['/pages/blog-grid']">Organic Fruits <span>(8)</span></a></li>
+            <li><a [routerLink]="['/pages/blog-grid']">Sea Foods <span>(0)</span></a></li>
+            <li><a [routerLink]="['/pages/blog-grid']">Vegetable <span>(3)</span></a></li>
+        </ul>
+      </div>
+  </div>
+  <!-- categories end -->
+
+  <!-- tag cloud start -->
+  <div class="tp-sidebar-widget mb-35">
+      <h3 class="tp-sidebar-widget-title">Popular Tags</h3>
+      <div class="tp-sidebar-widget-content tagcloud">
+        <a href="#">Summer</a>
+        <a href="#">Vintage</a>
+        <a href="#">Sunglasses</a>
+        <a href="#">Organic Food</a>
+        <a href="#">Lifesttyle</a>
+        <a href="#">Nature</a>
+      </div>
+  </div>
+  <!-- tag cloud end -->
+
+</div>

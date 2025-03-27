@@ -1,0 +1,22 @@
+<div 
+  [ngClass]="['nice-select', className, open ? 'open' : '']"
+  tabindex="0"
+  (click)="toggleOpen()"
+  role="button"
+
+style="background-color: #f5f5f5; border-radius: 5px 0px 0px 5px;"
+  
+>
+  <span class="current">{{ placeholder }}</span>
+  <ul class="list" role="menubar" (click)="stopPropagation($event)">
+    <li
+      *ngFor="let item of options; let index = index"
+      class="option"
+      [ngClass]="(item.value === current?.value ? 'selected focus' : '')"
+      (click)="currentHandler(item, index)"
+      role="menuitem"
+    >
+      {{ item.text }}
+    </li>
+  </ul>
+</div>

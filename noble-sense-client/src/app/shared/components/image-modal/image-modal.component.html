@@ -1,0 +1,17 @@
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <img [src]="imageSrc" class="img-fluid zoomable" [style.transform]="zoomStyle" alt="Selected Image" (wheel)="onWheel($event)">
+        <div class="zoom-controls">
+          <button (click)="zoomIn()">+</button>
+          <button (click)="zoomOut()">-</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

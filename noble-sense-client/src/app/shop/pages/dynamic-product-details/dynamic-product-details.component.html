@@ -1,0 +1,51 @@
+<!-- header start -->
+<app-header-one></app-header-one>
+<!-- header end -->
+
+
+<main *ngIf="product">
+  <!-- breadcrumb area start -->
+  <app-shop-details-breadcrumb [product]="product"></app-shop-details-breadcrumb>
+  <!-- breadcrumb area end -->
+
+  <!-- shop details area start -->
+  <section class="tp-product-details-area">
+    <div class="tp-product-details-top pb-115">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-5">
+            <!-- product details thumb start -->
+            <app-product-details-thumb [product]="product"></app-product-details-thumb>
+            <!-- product details thumb end -->
+          </div>
+          <!-- col end -->
+          <div class="col-xl-5 col-lg-6">
+            <!-- product details wrapper -->
+            <app-product-details-wrapper [product]="product" />
+            <!-- product details wrapper -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-product-details-bottom pb-140">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <!-- product details tab nav -->
+            <app-product-details-tab-nav [product]="product"></app-product-details-tab-nav>
+            <!-- product details tab nav -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- shop details area end -->
+
+  <!-- related products start -->
+  <app-related-products [productId]="product.id" [category]="product.parent" />
+  <!-- related products end -->
+</main>
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

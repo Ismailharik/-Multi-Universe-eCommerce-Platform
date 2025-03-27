@@ -1,0 +1,128 @@
+
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 0;
+  color: white;
+}
+.custom-navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.custom-navbar li {
+  padding: 5px;
+  position: relative;
+  margin: 0px 10px;
+}
+.custom-navbar .ecostruct {
+  height: 45px;
+}
+.custom-navbar a {
+  color: white;
+  text-decoration: none;
+}
+/* Dropdown Menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  // min-width: 160px;
+  // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Custom styling for images and other elements */
+.nav-item img {
+  display: block;
+  width: 150px; /* Adjust as needed */
+}
+.light-img {
+  margin-top: -25px;
+  width: 145px; /* Adjust as needed */
+}
+@media (max-width: 768px) {
+  .custom-navbar li:not(:nth-child(2)) {
+    display: none;
+  }
+  .custom-navbar li {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.dropdown-menu {
+  background-color: transparent;
+  border: none;
+}
+
+.dropdown-item {
+  color: white;
+  // background-color: rgba(255, 255, 255, 0.1);
+  padding: 5px 15px;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+}
+
+.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-toggle::after {
+  color: white;
+}
+.dropdown-menu li {
+  margin: 0;
+  border-color: none;
+}
+
+.dropdown-menu li a {
+  color: black;
+  padding: 0;
+  padding-left: 10px;
+}
+.dropdown-menu a:hover {
+  background-color: #2d3e51;
+  color: white !important;
+}
+.dropdown ul {
+  background-color: white;
+
+  display: block;
+  padding: 0;
+}
+
+.container-fluid {
+    padding-right: 20px;
+}
+
+.tp-header-bottom {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}

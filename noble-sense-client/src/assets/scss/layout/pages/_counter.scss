@@ -1,0 +1,39 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.13 Counter CSS
+/*----------------------------------------*/
+
+.#{$theme-prifix}-counter{
+    &-item{
+        @media #{$sm}{
+            flex: 0 0 auto;
+            width: 50%;
+        }
+        @media #{$xs}{
+            margin-right: 20px;
+        }
+    }
+    &-icon{
+        & span{
+            font-size: 26px;
+            color: var(--tp-theme-primary);
+        }
+    }
+    &-content{
+        & h4{
+            font-weight: 300;
+            font-size: 40px;
+            line-height: 1;
+            margin-bottom: 2px;
+
+            & span{
+                font-weight: 500;
+            }
+        }
+        & p{
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+    }
+}

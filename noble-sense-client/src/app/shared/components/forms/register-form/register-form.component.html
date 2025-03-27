@@ -1,0 +1,122 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="tp-login-input-wrapper row">
+    <div class="col-xxl-6 col-md-6">
+      <div class="profile__input-box" >
+        <div class="profile__input">
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            formControlName="fullName"
+          />
+          <span>
+            <svg _ngcontent-ng-c1544089344="" width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-ng-c1544089344="" d="M9 9C11.2091 9 13 7.20914 13 5C13 2.79086 11.2091 1 9 1C6.79086 1 5 2.79086 5 5C5 7.20914 6.79086 9 9 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c1544089344="" d="M15.5 17.6C15.5 14.504 12.3626 12 8.5 12C4.63737 12 1.5 14.504 1.5 17.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+          
+        </div>
+        <span *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)" class="text-danger">
+          Name is required
+        </span>
+      </div>
+    </div>
+    
+    <div class="col-xxl-6 col-md-6">
+      <div class="profile__input-box">
+        <div class="profile__input">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value="example@gmail.com"
+            formControlName="email"
+          />
+          <span>
+            <svg
+              width="18"
+              height="16"
+              viewBox="0 0 18 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13 14.6H5C2.6 14.6 1 13.4 1 10.6V5C1 2.2 2.6 1 5 1H13C15.4 1 17 2.2 17 5V10.6C17 13.4 15.4 14.6 13 14.6Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M13 5.3999L10.496 7.3999C9.672 8.0559 8.32 8.0559 7.496 7.3999L5 5.3999"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </div>
+        <span *ngIf="email?.hasError('required') && (email?.touched || formSubmitted)" class="text-danger">
+          Email is required
+        </span>
+      </div>
+    </div>
+    <div class="col-xxl-6 col-md-6">
+      <div class="profile__input-box">
+        <div class="profile__input">
+          <input
+            type="text"
+            placeholder="+33 XXXXXX"
+            value=""
+            formControlName="phone"
+          />
+          <span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22 16.5V21C22 21.5304 21.7893 22.0391 21.4142 22.4142C21.0391 22.7893 20.5304 23 20 23C15.0294 23 10.2457 20.6839 6.92893 17.0711C3.61206 13.4583 1.5 8.48478 1.5 3.5C1.5 2.96957 1.71071 2.46086 2.08579 2.08579C2.46086 1.71071 2.96957 1.5 3.5 1.5H8C8.26522 1.5 8.51957 1.60536 8.70711 1.79289C8.89464 1.98043 9 2.23478 9 2.5V7.5C9 7.76522 8.89464 8.01957 8.70711 8.20711C8.51957 8.39464 8.26522 8.5 8 8.5H6C6.53043 12.7299 10.2701 16.4696 14.5 17V15C14.5 14.7348 14.6054 14.4804 14.7929 14.2929C14.9804 14.1054 15.2348 14 15.5 14H20.5C20.7652 14 21.0196 14.1054 21.2071 14.2929C21.3946 14.4804 21.5 14.7348 21.5 15V20.5C21.5 20.7652 21.3946 21.0196 21.2071 21.2071C21.0196 21.3946 20.7652 21.5 20.5 21.5H18C18 21.5 18.5304 22.0391 19.5 21.5H22Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>  
+        </div>
+        <span *ngIf="phone?.hasError('required') && (phone?.touched || formSubmitted)" class="text-danger">
+          Phone is required
+        </span>
+      </div>
+    </div>
+    <div class="col-xxl-6 col-md-6">
+      <div class="profile__input-box">
+        <div class="profile__input">
+          <input
+            type="text"
+            placeholder="France X Rue ..."
+            value=""
+            formControlName="address"
+          />
+          <span>
+            <svg _ngcontent-ng-c1544089344="" width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-ng-c1544089344="" d="M7.99377 10.1461C9.39262 10.1461 10.5266 9.0283 10.5266 7.64946C10.5266 6.27061 9.39262 5.15283 7.99377 5.15283C6.59493 5.15283 5.46094 6.27061 5.46094 7.64946C5.46094 9.0283 6.59493 10.1461 7.99377 10.1461Z" stroke="currentColor" stroke-width="1.5"></path><path _ngcontent-ng-c1544089344="" d="M1.19707 6.1933C2.79633 -0.736432 13.2118 -0.72843 14.803 6.2013C15.7365 10.2663 13.1712 13.7072 10.9225 15.8357C9.29079 17.3881 6.70924 17.3881 5.06939 15.8357C2.8288 13.7072 0.263493 10.2583 1.19707 6.1933Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+          </span>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <div
+    class="tp-login-suggetions d-sm-flex align-items-center justify-content-between mb-20"
+  >
+    
+  </div>
+  <div class="tp-login-bottom"style="text-align:center" >
+    <!-- submit button disabled until form is valid -->
+    <button type="submit" class="tp-login-btn w-25 text-center"  > Save</button>
+  </div>
+</form>

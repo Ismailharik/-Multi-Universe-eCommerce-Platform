@@ -1,0 +1,56 @@
+<section class="tp-product-sm-area pt-50">
+  <div class="container">
+     <div class="row">
+        <div class="col-xl-4 col-md-6">
+           <div class="tp-product-sm-list mb-50">
+              <div class="tp-section-title-wrapper mb-40">
+                 <h3 class="tp-section-title tp-section-title-sm">Discount Products
+                    <svg width="64" height="20" viewBox="0 0 64 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                       <path d="M62 13.1107C1.91792 -5.41202 -3.10865 1.22305 5.00242 18.3636" stroke="currentColor" stroke-width="3" stroke-miterlimit="3.8637" stroke-linecap="round"/>
+                    </svg>
+                 </h3>
+              </div>
+              <div class="tp-product-sm-wrapper mr-20">
+                <ng-container *ngFor="let item of discount_products; let i = index; let last = last">
+                    <app-product-sm-item [product]="item" [class.last_product]="last"></app-product-sm-item>
+                </ng-container>
+              </div>
+           </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+           <div class="tp-product-sm-list mb-50">
+              <div class="tp-section-title-wrapper mb-40">
+                 <h3 class="tp-section-title tp-section-title-sm">Featured Products
+                    <svg width="64" height="20" viewBox="0 0 64 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                       <path d="M62 13.1107C1.91792 -5.41202 -3.10865 1.22305 5.00242 18.3636" stroke="currentColor" stroke-width="3" stroke-miterlimit="3.8637" stroke-linecap="round"/>
+                    </svg>
+                 </h3>
+              </div>
+
+              <div class="tp-product-sm-wrapper mr-20">
+                <ng-container *ngFor="let item of featured_products; let i = index; let last = last">
+                  <app-product-sm-item [product]="item" [class.last_product]="last"></app-product-sm-item>
+                </ng-container>
+              </div>
+           </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+           <div class="tp-product-sm-list mb-50">
+              <div class="tp-section-title-wrapper mb-40">
+                 <h3 class="tp-section-title tp-section-title-sm">Best Selling Products
+                    <svg width="64" height="20" viewBox="0 0 64 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                       <path d="M62 13.1107C1.91792 -5.41202 -3.10865 1.22305 5.00242 18.3636" stroke="currentColor" stroke-width="3" stroke-miterlimit="3.8637" stroke-linecap="round"/>
+                    </svg>
+                 </h3>
+              </div>
+
+              <div class="tp-product-sm-wrapper mr-20">
+                <ng-container *ngFor="let item of selling_products; let i = index; let last = last">
+                  <app-product-sm-item [product]="item" [class.last_product]="last"></app-product-sm-item>
+                </ng-container>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>

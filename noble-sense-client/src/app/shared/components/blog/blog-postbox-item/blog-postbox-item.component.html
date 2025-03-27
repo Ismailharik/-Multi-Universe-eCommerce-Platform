@@ -1,0 +1,77 @@
+<article class="tp-postbox-item format-image mb-50 transition-3">
+  <div *ngIf="!blog.blockquote && !blog.video && !blog.audio && !blog.slider">
+    <div class="tp-postbox-thumb w-img">
+      <a [routerLink]="['/pages/blog-details']">
+        <img [src]="blog.img" alt="blog img" />
+      </a>
+    </div>
+  </div>
+  <div
+    *ngIf="blog.video && blog.video_id"
+    class="tp-postbox-thumb tp-postbox-video w-img p-relative"
+  >
+    <a [routerLink]="['/pages/blog-details']">
+      <img [src]="blog.img" alt="blog img" />
+    </a>
+    <a
+      (click)="utilsService.playVideo(blog.video_id)"
+      class="cursor-pointer tp-postbox-video-btn popup-video"
+    >
+      <i class="fas fa-play"></i>
+    </a>
+  </div>
+  <div
+    *ngIf="blog.audio && blog.audio_id"
+    class="tp-postbox-thumb tp-postbox-audio w-img p-relative"
+  >
+    <iframe
+      [src]="sanitizer.bypassSecurityTrustResourceUrl(blog.audio_id)"
+      allow="autoplay"
+    ></iframe>
+  </div>
+  <div *ngIf="blog.slider">
+    <div class="tp-postbox-slider tp-postbox-thumb swiper-container w-img p-relative" #swiperContainer>
+      <div class="swiper-wrapper">
+        <div
+          *ngFor="let img of blog.slider_images; let i = index"
+          class="tp-postbox-slider-item swiper-slide"
+        >
+          <img [src]="img" alt="slider img" />
+        </div>
+      </div>
+      <div class="tp-postbox-nav">
+        <button (click)="swiperInstance?.slideNext()" class="tp-postbox-slider-button-next"><i class="fal fa-arrow-right"></i></button>
+        <button (click)="swiperInstance?.slidePrev()" class="tp-postbox-slider-button-prev"><i class="fal fa-arrow-left"></i></button>
+     </div>
+    </div>
+  </div>
+  <div *ngIf="!blog.blockquote" class="tp-postbox-content">
+    <div class="tp-postbox-meta">
+      <span> <i class="far fa-calendar-check"></i> {{ blog.date }} </span>
+      <span>
+        <a href="#"> <i class="far fa-user"></i> {{ blog.author }} </a>
+      </span>
+      <span>
+        <a href="#">
+          <i class="fal fa-comments"></i> {{ blog.comments }} Comments
+        </a>
+      </span>
+    </div>
+    <h3 class="tp-postbox-title">
+      <a [routerLink]="['/pages/blog-details']">{{ blog.title }}</a>
+    </h3>
+    <div class="tp-postbox-text">
+      <p>{{ blog.desc }} […]</p>
+    </div>
+    <div class="tp-postbox-read-more">
+      <a [routerLink]="['/pages/blog-details']" class="tp-btn">Read More</a>
+    </div>
+  </div>
+  <div *ngIf="blog.blockquote" class="tp-postbox-quote">
+    <blockquote>
+      <p>
+        {{ blog.title }}<cite>{{ blog.author }}</cite>
+      </p>
+    </blockquote>
+  </div>
+</article>

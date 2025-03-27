@@ -1,0 +1,10 @@
+.fa-star {
+    color: #ccc; // Default color for non-selected stars
+    cursor: pointer;
+    transition: color 0.2s;
+  
+    &.active {
+      color: #f0ad4e; // Gold color when active
+    }
+  }
+  

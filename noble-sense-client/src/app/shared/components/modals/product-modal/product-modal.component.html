@@ -1,0 +1,32 @@
+<div
+  *ngIf="utilsService.modalId && utilsService.product"
+  class="modal fade tp-product-modal"
+  [id]="utilsService.modalId"
+  tabindex="-1"
+  [attr.aria-labelledby]="utilsService.modalId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="tp-product-modal-content d-lg-flex align-items-start">
+        <button
+          type="button"
+          class="tp-product-modal-close-btn"
+          [attr.data-bs-toggle]="'modal'"
+          [attr.data-bs-target]="'#' + utilsService.modalId"
+        >
+          <i class="fa-regular fa-xmark"></i>
+        </button>
+
+        <!-- product details thumb start -->
+        <app-product-details-thumb [product]="utilsService.product" class="modal-thumb"></app-product-details-thumb>
+        <!-- product details thumb end -->
+
+
+        <!-- product details wrapper -->
+        <app-product-details-wrapper [product]="utilsService.product" [isShowBottom]="false" class="modal-wrapper" />
+        <!-- product details wrapper -->
+      </div>
+    </div>
+  </div>
+</div>

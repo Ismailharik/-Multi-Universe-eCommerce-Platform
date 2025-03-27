@@ -1,0 +1,15 @@
+<div class="tp-shop-widget-content">
+  <div
+    class="tp-shop-widget-brand-list d-flex align-items-center justify-content-between flex-wrap"
+  >
+    <div
+      *ngFor="let item of brandsData.slice(0, 8)"
+      class="tp-shop-widget-brand-item"
+    >
+      <a (click)="handleBrandRoute(item.name)" class="cursor-pointer">
+        <img *ngIf="item.logo" [src]="item.logo" alt="logo" />
+        <span *ngIf="!item.logo">{{ item.name }}</span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/ecommerce-db?createDatabaseIfNotExist=true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+  # Specifies the directory from which Spring Boot serves static files.
+  web:
+    resources:
+      static-locations: file:///C:/uploads/
+file:
+  upload:
+    directory: "C:/uploads"

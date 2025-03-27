@@ -1,0 +1,106 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.14 History CSS
+/*----------------------------------------*/
+
+.#{$theme-prifix}-history{
+    &-wrapper{
+        @media #{$md}{
+            padding-right: 50px;
+        }
+        @media #{$sm, $xs}{
+            padding-right: 0;
+            margin-bottom: 50px;
+        }
+    }
+    &-title{
+        font-size: 44px;
+        font-weight: 500;
+        line-height: 1.14;
+        margin-bottom: 23px;
+    }
+    &-content{
+        & p{
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+    }
+    &-year{
+        & p{
+            font-weight: 600;
+            font-size: 100px;
+            line-height: .8;
+            letter-spacing: 0.3em;
+            color: #E7E7E7;
+            margin-bottom: 0;
+
+            @media #{$xs}{
+                font-size: 85px;
+            }
+        }
+    }
+    &-thumb{
+        border: 4px solid #FFFFFF;
+        box-shadow: 0px 1px 1px rgba(1, 15, 28, 0.2);
+
+        &-wrapper{
+            @media #{$lg, $md, $sm, $xs}{
+                margin-left: 0;
+            }
+        }
+        &-text{
+            position: absolute;
+            left: -45px;
+            bottom: 55px;
+            min-width: 230px;
+            background-color: var(--tp-common-white);
+            box-shadow: 0px 20px 30px rgba(1, 15, 28, 0.1);
+            padding: 20px 26px 22px;
+
+            @media #{$sm, $xs}{
+                left: 20px;
+                bottom: 20px;
+            }
+            & p{
+                font-size: 16px;
+                color: var(--tp-common-black);
+                line-height: 1.5;
+                margin-bottom: 0;
+                font-style: italic;
+            }
+        }
+    }
+
+    &-nav{
+        border-top: 1px solid #E4E4E4;
+
+        &-year{
+            position: relative;
+            padding-top: 20px;
+            &::after{
+                position: absolute;
+                content: '';
+                left: 0;
+                top: -1px;
+                width:0;
+                height: 3px;
+                @extend %tp-transition;
+            }
+            & p{
+                font-size: 30px;
+                font-weight: 600;
+                margin-bottom: 0;
+                color: var(--tp-common-black);
+            }
+        }
+
+        & .swiper-slide-thumb-active{
+            &::after{
+                width: 100%;
+                background-color: var(--tp-theme-primary);
+            }
+        }
+    }
+}

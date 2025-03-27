@@ -1,0 +1,34 @@
+<ul>
+  <li
+    *ngFor="let item of menu_data; let i = index"
+    [ngClass]="{
+      'has-dropdown': item.drop_down,
+      'has-dropdown has-mega-menu': item.mega_menu
+    }"
+  >
+    <a [routerLink]="item.link">{{ item.title }}</a>
+    <div *ngIf="item.home_pages" class="home-menu tp-submenu tp-mega-menu">
+      <div class="row row-cols-1 row-cols-lg-4 row-cols-xl-4">
+        <div *ngFor="let home of item.home_pages; let i = index" class="col">
+          <div class="home-menu-item">
+            <a [routerLink]="home.link">
+              <div class="home-menu-thumb p-relative fix">
+                <img [src]="home.img" alt="image"   />
+              </div>
+              <div class="home-menu-content">
+                <h5 class="home-menu-title">{{ home.title }}</h5>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <ul *ngIf="item.drop_down" class="tp-submenu">
+      <li *ngFor="let drop_m of item.dropdown_menus; let i = index">
+        <a [routerLink]="drop_m.link">{{ drop_m.title }}</a>
+      </li>
+    </ul>
+  </li>
+</ul>

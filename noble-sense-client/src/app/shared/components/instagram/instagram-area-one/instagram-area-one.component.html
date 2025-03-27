@@ -1,0 +1,14 @@
+<div class="tp-instagram-area pb-70">
+  <div class="container">
+      <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1">
+        <div class="col" *ngFor="let item of instagram_data">
+            <div class="tp-instagram-item p-relative z-index-1 fix mb-30 w-img">
+              <img [src]="item.img" alt="instagram-img">
+              <div class="tp-instagram-icon">
+                  <a [href]="item.link" target="_blank" class="popup-image"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  </div>

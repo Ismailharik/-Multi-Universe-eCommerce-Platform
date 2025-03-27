@@ -1,0 +1,29 @@
+<div class="tp-shop-widget-content">
+  <div class="tp-shop-widget-categories">
+    <ul>
+      <li >
+        <a (click)="handleCategoryRoute(0)" 
+        [ngClass]="{
+          'cursor-pointer': true,
+          active:
+            activeQuery ==0
+        }"
+        >All</a>
+      </li >
+      <li *ngFor="let category of categories">
+        <a
+          (click)="handleCategoryRoute(category.id)"
+          [ngClass]="{
+            'cursor-pointer': true,
+            active:
+              activeQuery ==
+              category.id
+          }"
+        >
+          {{ category.name }}
+          <span>{{ category.numberOfProducts }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

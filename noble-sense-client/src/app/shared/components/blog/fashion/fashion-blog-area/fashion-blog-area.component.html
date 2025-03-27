@@ -1,0 +1,29 @@
+<section class="tp-blog-area pt-110 pb-120">
+  <div class="container">
+     <div class="row">
+        <div class="col-xl-12">
+           <div class="tp-section-title-wrapper-2 mb-50 text-center">
+              <span class="tp-section-title-pre-2">
+                 Our Blog & News
+                 <svg width="82" height="22" viewBox="0 0 82 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M81 14.5798C0.890564 -8.05914 -5.81154 0.0503902 5.00322 21" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" stroke-miterlimit="3.8637" stroke-linecap="round"/>
+                 </svg>
+              </span>
+              <h3 class="tp-section-title-2">Latest News & Articles</h3>
+           </div>
+        </div>
+     </div>
+     <div class="row">
+        <div *ngFor="let item of fashion_blogs" class="col-xl-4 col-lg-4 col-md-6">
+           <app-blog-item-two [blog]="item" />
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-xl-12">
+           <div class="tp-blog-more-2 mt-10 text-center">
+              <a [routerLink]="['/pages/blog-grid']" class="tp-btn tp-btn-border tp-btn-border-sm">Discover More</a>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>

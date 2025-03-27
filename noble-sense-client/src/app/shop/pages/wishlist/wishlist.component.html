@@ -1,0 +1,81 @@
+<!-- header start -->
+<app-header-two [style_2]="true"></app-header-two>
+<!-- header end -->
+
+<!-- breadcrumb area start -->
+<app-breadcrumb-one title="Wishlist" subtitle="Wishlist"></app-breadcrumb-one>
+<!-- breadcrumb area end -->
+
+<!-- wishlist area start -->
+<section class="tp-cart-area pb-120">
+  <div class="container">
+    <div *ngIf="wishlistService.getWishlistProducts().length === 0" class="text-center pt-50">
+      <h3>No Wishlist Items Found</h3>
+      <a routerLink="/shop" class="tp-cart-checkout-btn mt-20">Continue Shopping</a>
+    </div>
+    <div *ngIf="wishlistService.getWishlistProducts().length > 0" class="row">
+      <div class="col-xl-12">
+        <div class="tp-cart-list mb-45 mr-30">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2" class="tp-cart-header-product">Product</th>
+                <th class="tp-cart-header-price">Price</th>
+                <th>Add Cart</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of wishlistService.getWishlistProducts()">
+                <!-- img -->
+                <td class="tp-cart-img">
+                  <a [routerLink]="['/shop/shop-details', item.id]" style="background-color: #F2F3F5; display: block;">
+                <img [src]="item.imageURLs[0]" alt="image" />
+                  </a>
+                </td>
+                <!-- title -->
+                <td class="tp-cart-title">
+                  <a [routerLink]="['/shop/shop-details', item.id]">{{ item.title }}</a>
+                </td>
+                <!-- price -->
+                <td class="tp-cart-price"><span>${{ item.price.toFixed(2) }}</span></td>
+
+                <td class="tp-cart-add-to-cart">
+                  <button (click)="cartService.addCartProduct(item)" type="button" class="tp-btn tp-btn-2 tp-btn-blue">
+                    Add To Cart
+                  </button>
+                </td>
+
+                <!-- action -->
+                <td class="tp-cart-action">
+                  <button class="tp-cart-action-btn" (click)="wishlistService.removeWishlist(item)">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.53033 1.53033C9.82322 1.23744 9.82322 0.762563 9.53033 0.46967C9.23744 0.176777 8.76256 0.176777 8.46967 0.46967L5 3.93934L1.53033 0.46967C1.23744 0.176777 0.762563 0.176777 0.46967 0.46967C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L3.93934 5L0.46967 8.46967C0.176777 8.76256 0.176777 9.23744 0.46967 9.53033C0.762563 9.82322 1.23744 9.82322 1.53033 9.53033L5 6.06066L8.46967 9.53033C8.76256 9.82322 9.23744 9.82322 9.53033 9.53033C9.82322 9.23744 9.82322 8.76256 9.53033 8.46967L6.06066 5L9.53033 1.53033Z" fill="currentColor"></path>
+                    </svg>
+                    <span> Remove</span>
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="tp-cart-bottom">
+          <div class="row align-items-end">
+            <div class="col-xl-6 col-md-4">
+              <div class="tp-cart-update">
+                <a routerLink="/pages/cart" class="tp-cart-update-btn">Go To Cart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wishlist area end -->
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

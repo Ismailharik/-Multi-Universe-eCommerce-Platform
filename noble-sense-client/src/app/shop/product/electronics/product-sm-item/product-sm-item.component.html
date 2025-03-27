@@ -1,0 +1,54 @@
+<div class="tp-product-sm-item d-flex align-items-center">
+  <div class="tp-product-thumb mr-25 fix">
+    <a [routerLink]="['/shop/shop-details', product.id]">
+      <img
+        [src]="product.imageURLs[0]"
+        alt="product-img"
+        width="140"
+        height="140"
+      />
+    </a>
+  </div>
+  <div class="tp-product-sm-content">
+    <div class="tp-product-category">
+      <a [routerLink]="['/shop/shop-details', product.id]">{{
+        product.parent
+      }}</a>
+    </div>
+    <h3 class="tp-product-title">
+      <a [routerLink]="['/shop/shop-details', product.id]">
+        {{ product.title }}
+      </a>
+    </h3>
+    <div class="tp-product-rating d-sm-flex align-items-center">
+      <div class="tp-product-rating-icon">
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+      </div>
+      <div class="tp-product-rating-text">
+        <span>({{ 6 }} Review)</span>
+      </div>
+    </div>
+    <div class="tp-product-price-wrapper">
+      <!-- <span class="tp-product-price">${{product.price.toFixed(2)}}</span> -->
+      <ng-container *ngIf="product.discount > 0; else noDiscount">
+        <span class="tp-product-price old-price">${{ product.price }}</span>
+        <span class="tp-product-price new-price">
+          ${{
+            (product.price - (product.price * product.discount) / 100).toFixed(
+              2
+            )
+          }}
+        </span>
+      </ng-container>
+      <ng-template #noDiscount>
+        <span class="tp-product-price new-price"
+          >${{ product.price.toFixed(2) }}</span
+        >
+      </ng-template>
+    </div>
+  </div>
+</div>

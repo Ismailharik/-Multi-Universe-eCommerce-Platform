@@ -1,0 +1,62 @@
+<section class="tp-best-area pb-60 pt-130">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-section-title-wrapper-3 mb-45 text-center text-lg-start">
+          <span class="tp-section-title-pre-3">Best Seller This Week’s</span>
+          <h3 class="tp-section-title-3">Enjoy the best quality</h3>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-product-tab-2 tp-product-tab-3 tp-tab mb-50 text-center">
+          <div
+            class="tp-product-tab-inner-3 d-flex align-items-center justify-content-center justify-content-lg-end"
+          >
+            <nav>
+              <div class="nav nav-tabs justify-content-center tp-product-tab tp-tab-menu p-relative">
+                <ng-container *ngFor="let tab of tabs; let i = index">
+                  <button
+                    *ngIf="active_tab === tab; else notActive"
+                    (click)="handleActiveMarker($event, tab)"
+                    [ngClass]="'nav-link ' + (active_tab === tab ? 'active' : '')"
+                    id="nav_active"
+                    #navActive
+                  >
+                    {{ tab }}
+                    <span class="tp-product-tab-tooltip">{{ filteredProducts.length }}</span>
+                  </button>
+                  <ng-template #notActive>
+                    <button
+                      (click)="handleActiveMarker($event, tab)"
+                      [ngClass]="'nav-link ' + (active_tab === tab ? 'active' : '')"
+                    >
+                      {{ tab }}
+                      <span class="tp-product-tab-tooltip">{{ filteredProducts.length }}</span>
+                    </button>
+                  </ng-template>
+                </ng-container>
+                <span
+                  id="productTabMarker"
+                  class="tp-tab-line d-none d-sm-inline-block"
+                  #productTabMarker
+                ></span>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="row">
+          <div
+            *ngFor="let item of filteredProducts; let i = index"
+            class="col-lg-3 col-md-4 col-sm-6"
+          >
+            <app-product-item-three [product]="item" [style_2]="true"></app-product-item-three>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

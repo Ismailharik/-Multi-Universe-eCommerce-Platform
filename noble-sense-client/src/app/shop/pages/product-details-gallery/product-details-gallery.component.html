@@ -1,0 +1,56 @@
+ <!-- header start -->
+ <app-header-two [style_2]="true"></app-header-two>
+ <!-- header end -->
+
+<!-- breadcrumb area start -->
+<app-shop-details-breadcrumb [product]="product"></app-shop-details-breadcrumb>
+<!-- breadcrumb area end -->
+
+<!-- shop details area start -->
+<section class="tp-product-details-area">
+  <div class="tp-product-details-top pb-115">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-7 col-lg-6">
+          <!-- product details gallery thumb start -->
+          <div class="tp-product-details-thumb-gallery">
+            <div class="row">
+              <div *ngFor="let item of product.imageURLs; let i = index" class="col-lg-6">
+                <div class="tp-product-details-thumb-gallery-item mb-25" style="background-color: #f5f6f8">
+          <img [src]="item" alt="product-img" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- product details gallery thumb end -->
+        </div>
+        <!-- col end -->
+        <div class="col-xl-5 col-lg-6">
+          <!-- product details wrapper -->
+          <app-product-details-wrapper [product]="product"/>
+          <!-- product details wrapper -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tp-product-details-bottom pb-140">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <!-- product details tab nav -->
+          <app-product-details-tab-nav [product]="product"></app-product-details-tab-nav>
+          <!-- product details tab nav -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- shop details area end -->
+
+<!-- related products start -->
+<app-related-products [productId]="product.id" [category]="product.parent" />
+<!-- related products end -->
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

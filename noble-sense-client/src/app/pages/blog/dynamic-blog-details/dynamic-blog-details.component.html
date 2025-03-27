@@ -1,0 +1,12 @@
+<!-- header start -->
+<app-header-two [style_2]="true"></app-header-two>
+<!-- header end -->
+
+<main *ngIf="blog">
+  <!-- blog details area start -->
+  <app-blog-details-area [blog]="blog"></app-blog-details-area>
+  <!-- blog details area end -->
+</main>
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

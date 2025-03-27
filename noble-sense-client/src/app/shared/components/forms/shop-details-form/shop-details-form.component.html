@@ -1,0 +1,67 @@
+<form [formGroup]="shopReviewForm" (ngSubmit)="onSubmit()">
+  <div class="tp-product-details-review-form-rating d-flex align-items-center">
+     <p>Your Rating :</p>
+     <!-- <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+     </div> -->
+     <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
+      <span *ngFor="let star of stars; let i = index" (click)="setRating(i+1)">
+        <i class="fa-solid fa-star" [ngClass]="{'active': starsNumber?.value >= i+1}"></i>
+      </span>
+    </div>
+    
+  </div>
+  <div class="tp-product-details-review-input-wrapper">
+
+     <div class="tp-product-details-review-input-box">
+        <div class="tp-product-details-review-input">
+           <textarea id="description" name="description" placeholder="Write your review here..." formControlName="description"></textarea>
+        </div>
+        <div class="tp-product-details-review-input-title">
+           <label for="msg">Your Review</label>
+        </div>
+        <span *ngIf="description?.hasError('required') && (description?.touched || formSubmitted)" class="text-danger">
+          Review is required
+        </span>
+     </div>
+
+     <div class="tp-product-details-review-input-box">
+        <div class="tp-product-details-review-input">
+           <input name="fullName" id="fullName" type="text" placeholder="Shahnewaz Sakil" formControlName="fullName">
+        </div>
+        <div class="tp-product-details-review-input-title">
+           <label for="fullName">Your Full Name</label>
+        </div>
+        <span *ngIf="fullName?.hasError('required') && (fullName?.touched || formSubmitted)" class="text-danger">
+          Name is required
+        </span>
+     </div>
+
+     <div class="tp-product-details-review-input-box">
+        <div class="tp-product-details-review-input">
+           <input name="email" id="email" type="email" placeholder="shofy@mail.com" formControlName="email">
+        </div>
+        <div class="tp-product-details-review-input-title">
+           <label for="email">Your Email</label>
+        </div>
+
+      <span *ngIf="(email?.hasError('required') && email?.touched) || (email?.hasError('email') && email?.dirty) || (formSubmitted && !email?.value)" class="text-danger">
+        Email is required and must be a valid email address
+      </span>
+     </div>
+  </div>
+
+  <div class="tp-product-details-review-suggetions mb-20">
+     <div class="tp-product-details-review-remeber">
+        <input id="remeber" type="checkbox">
+        <label for="remeber">Save my name, email, and website in this browser for the next time I comment.</label>
+     </div>
+  </div>
+  <div class="tp-product-details-review-btn-wrapper">
+     <button type="submit" class="tp-product-details-review-btn">Submit</button>
+  </div>
+</form>

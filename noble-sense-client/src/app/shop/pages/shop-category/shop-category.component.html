@@ -1,0 +1,28 @@
+ <!-- header start -->
+ <app-header-two [style_2]="true"></app-header-two>
+ <!-- header end -->
+
+<!-- breadcrumb area start -->
+<app-breadcrumb-one title="Shop Categories" subtitle="Shop Categories"></app-breadcrumb-one>
+<!-- breadcrumb area end -->
+
+<section class="tp-category-area pb-120">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let item of category_data" class="col-lg-3 col-sm-6">
+        <div class="tp-category-main-box mb-25 p-relative fix" style="background-color: #f3f5f7">
+          <div class="tp-category-main-content">
+            <h3 class="tp-category-main-title pb-1">
+              <a (click)="handleCategory(item.parent)" class="cursor-pointer">{{ item.parent }}</a>
+            </h3>
+            <span class="tp-category-main-item">{{ item.numberOfProducts }} Products</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

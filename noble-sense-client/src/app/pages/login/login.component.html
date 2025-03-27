@@ -1,0 +1,64 @@
+<!-- header start -->
+<app-header-two [style_2]="true"></app-header-two>
+<!-- header end -->
+
+<main>
+  <!-- breadcrumb area start -->
+  <section class="breadcrumb__area include-bg text-center pt-95 pb-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-12">
+          <div class="breadcrumb__content p-relative z-index-1">
+            <h3 class="breadcrumb__title">My account</h3>
+            <div class="breadcrumb__list">
+              <span><a href="#">Home</a></span>
+              <span>My account</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb area end -->
+
+  <!-- login area start -->
+  <section class="tp-login-area pb-140 p-relative z-index-1 fix">
+    <div class="tp-login-shape">
+      <img class="tp-login-shape-1" src="/assets/img/login/login-shape-1.png" alt="">
+      <img class="tp-login-shape-2" src="/assets/img/login/login-shape-2.png" alt="">
+      <img class="tp-login-shape-3" src="/assets/img/login/login-shape-3.png" alt="">
+      <img class="tp-login-shape-4" src="/assets/img/login/login-shape-4.png" alt="">
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8">
+          <div class="tp-login-wrapper">
+            <div class="tp-login-top text-center mb-30">
+              <h3 class="tp-login-title">Login to Shofy.</h3>
+              <p>Don’t have an account? <span>
+                <a routerLink="/pages/register">Create a free account</a>
+               </span>
+             </p>
+            </div>
+            <div class="tp-login-option">
+              <!-- social login start -->
+              <app-social-login></app-social-login>
+              <!-- social login end -->
+              <div class="tp-login-mail text-center mb-40">
+                <p>or Sign in with <a href="#">Email</a></p>
+              </div>
+              <!-- login form start -->
+              <app-login-form></app-login-form>
+              <!-- login form end -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- login area end -->
+</main>
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

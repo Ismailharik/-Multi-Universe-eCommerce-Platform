@@ -1,0 +1,49 @@
+<div class="tp-product-banner-area pb-90">
+  <div class="container">
+     <div class="tp-product-banner-slider fix">
+        <div class="tp-product-banner-slider-active swiper-container">
+           <div class="swiper-wrapper">
+              <div *ngFor="let item of productBannerData" class="tp-product-banner-inner theme-bg p-relative z-index-1 fix swiper-slide">
+                 <h4 class="tp-product-banner-bg-text">tablet</h4>
+                 <div class="row align-items-center">
+                  <div class="col-xl-6 col-lg-6">
+                    <div class="tp-product-banner-content p-relative z-index-1">
+                      <span class="tp-product-banner-subtitle">{{item.subtitle}}</span>
+                      <h3 class="tp-product-banner-title">
+                        {{item.title}}
+                      </h3>
+                      <div class="tp-product-banner-price mb-40">
+                        <span class="old-price">${{item.oldPrice.toFixed(2)}}</span>
+                        <p class="new-price">${{item.newPrice.toFixed(2)}}</p>
+                      </div>
+                      <div class="tp-product-banner-btn">
+                        <a routerLink="/shop" class="tp-btn tp-btn-2">Shop now</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6">
+                    <div class="tp-product-banner-thumb-wrapper p-relative">
+                      <div class="tp-product-banner-thumb-shape">
+                        <span class="tp-product-banner-thumb-gradient"></span>
+                        <img
+                          class="tp-offer-shape"
+                          src="assets/img/banner/banner-slider-offer.png"
+                          alt="offer-img"
+                        />
+                      </div>
+
+                      <div
+                        class="tp-product-banner-thumb text-end p-relative z-index-1"
+                      >
+                        <img [src]="item.img" alt="banner-img" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           </div>
+           <div class="tp-product-banner-slider-dot tp-swiper-dot"></div>
+        </div>
+     </div>
+  </div>
+</div>

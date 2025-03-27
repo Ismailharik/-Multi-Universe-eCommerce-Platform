@@ -1,0 +1,49 @@
+<section class="tp-testimonial-area pt-115 pb-100">
+  <div class="container">
+     <div class="row">
+        <div class="col-xl-12">
+           <div class="tp-section-title-wrapper-3 mb-45 text-center">
+              <span class="tp-section-title-pre-3">Customers Review</span>
+              <h3 class="tp-section-title-3">What our Clients say</h3>
+           </div>
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-xl-12">
+           <div class="tp-testimonial-slider-3">
+              <div class="tp-testimoinal-slider-active-3 swiper-container">
+                 <div class="swiper-wrapper">
+                    <div *ngFor="let item of testi_data" class="tp-testimonial-item-3 swiper-slide grey-bg-7 p-relative z-index-1">
+                       <div class="tp-testimonial-shape-3">
+                          <img class="tp-testimonial-shape-3-quote" src="assets/img/testimonial/testimonial-quote.png" alt="">
+                       </div>
+                       <div class="tp-testimonial-rating tp-testimonial-rating-3">
+                          <span><i class="fa-solid fa-star"></i></span>
+                          <span><i class="fa-solid fa-star"></i></span>
+                          <span><i class="fa-solid fa-star"></i></span>
+                          <span><i class="fa-solid fa-star"></i></span>
+                          <span><i class="fa-solid fa-star"></i></span>
+                       </div>
+                       <div class="tp-testimonial-content-3">
+                          <p>{{item.desc}}</p>
+                       </div>
+                       <div class="tp-testimonial-user-wrapper-3 d-flex">
+                          <div class="tp-testimonial-user-3 d-flex align-items-center">
+                             <div class="tp-testimonial-avater-3 mr-10">
+                                <img [src]="item.user" alt="">
+                             </div>
+                             <div class="tp-testimonial-user-3-info tp-testimonial-user-translate">
+                                <h3 class="tp-testimonial-user-3-title">{{item.name}} /</h3>
+                                <span class="tp-testimonial-3-designation">{{item.designation}}</span>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="tp-testimoinal-slider-dot-3 tp-swiper-dot-border text-center mt-50"></div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>

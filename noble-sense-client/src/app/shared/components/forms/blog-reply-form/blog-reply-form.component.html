@@ -1,0 +1,86 @@
+<form [formGroup]="blogReplyForm" (ngSubmit)="onSubmit()">
+  <div class="tp-postbox-details-form-wrapper">
+    <div class="tp-postbox-details-form-inner">
+      <div class="tp-postbox-details-input-box">
+        <div class="tp-contact-input">
+          <input
+            name="name"
+            id="name"
+            type="text"
+            placeholder="Shahnewaz Sakil"
+            formControlName="name"
+          />
+        </div>
+        <div class="tp-postbox-details-input-title">
+          <label for="name">Your Name</label>
+        </div>
+        <span
+          *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)"
+          class="text-danger"
+        >
+          Name is required
+        </span>
+      </div>
+
+      <div class="tp-postbox-details-input-box">
+        <div class="tp-contact-input">
+          <input
+            name="email"
+            id="email"
+            type="email"
+            placeholder="shofy@mail.com"
+            formControlName="email"
+          />
+        </div>
+        <div class="tp-postbox-details-input-title">
+          <label for="email">Your Email</label>
+        </div>
+        <span
+          *ngIf="
+            (email?.hasError('required') && email?.touched) ||
+            (email?.hasError('email') && email?.dirty) ||
+            (formSubmitted && !email?.value)
+          "
+          class="text-danger"
+        >
+          Email is required and must be a valid email address
+        </span>
+      </div>
+
+      <div class="tp-postbox-details-input-box">
+        <div class="tp-contact-input">
+          <textarea
+            id="msg"
+            placeholder="Write your message here..."
+            formControlName="message"
+          ></textarea>
+        </div>
+        <div class="tp-postbox-details-input-title">
+          <label for="msg">Your Message</label>
+        </div>
+        <span
+          *ngIf="
+            message?.hasError('required') && (message?.touched || formSubmitted)
+          "
+          class="text-danger"
+        >
+          Message is required
+        </span>
+      </div>
+    </div>
+    <div class="tp-postbox-details-suggetions mb-20">
+      <div class="tp-postbox-details-remeber">
+        <input id="remeber" type="checkbox" />
+        <label for="remeber"
+          >Save my name, email, and website in this browser for the next time I
+          comment.</label
+        >
+      </div>
+    </div>
+    <div class="tp-postbox-details-input-box">
+      <button class="tp-postbox-details-input-btn" type="submit">
+        Post Comment
+      </button>
+    </div>
+  </div>
+</form>

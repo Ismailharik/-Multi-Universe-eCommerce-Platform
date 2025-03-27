@@ -1,0 +1,82 @@
+<section class="tp-product-gadget-area pt-80 pb-75">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4 col-lg-5">
+        <div class="tp-product-gadget-sidebar mb-40">
+          <div class="tp-product-gadget-categories p-relative fix mb-10">
+            <div class="tp-product-gadget-thumb">
+              <img src="/assets/img/product/gadget/gadget-girl.png" alt="" />
+            </div>
+            <h3 class="tp-product-gadget-categories-title">
+              Electronics <br /> Gadgets
+            </h3>
+
+            <div class="tp-product-gadget-categories-list">
+              <ul>
+                <li><a routerLink="/shop/shop-category">Micrscope</a></li>
+                <li><a routerLink="/shop/shop-category">Remote Control</a></li>
+                <li><a routerLink="/shop/shop-category">Monitor</a></li>
+                <li><a routerLink="/shop/shop-category">Thermometer</a></li>
+                <li><a routerLink="/shop/shop-category">Backpack</a></li>
+                <li><a routerLink="/shop/shop-category">Headphones</a></li>
+              </ul>
+            </div>
+
+            <div class="tp-product-gadget-btn">
+              <a routerLink="/shop/shop-category" class="tp-link-btn">
+                More Products
+                <svg
+                  width="15"
+                  height="13"
+                  viewBox="0 0 15 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.9998 6.19656L1 6.19656"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8.75674 0.975394L14 6.19613L8.75674 11.4177"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="tp-product-gadget-banner">
+            <div class="tp-product-gadget-banner-slider-active">
+              <div
+                class="tp-product-gadget-banner-item include-bg"
+                style="background-image: url(/assets/img/product/gadget/gadget-banner-1.jpg)"
+              >
+                <div class="tp-product-gadget-banner-content">
+                  <span class="tp-product-gadget-banner-price">Only $99.00</span>
+                  <h3 class="tp-product-gadget-banner-title">
+                    <a routerLink="/shop/shop-details">Selected novelty <br /> Products</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="tp-product-gadget-banner-slider-dot tp-swiper-dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8 col-lg-7">
+        <div class="tp-product-gadget-wrapper">
+          <div class="row">
+            <div class="col-xl-4 col-sm-6" *ngFor="let item of product_gadget">
+              <app-product-item-one [product]="item"></app-product-item-one>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

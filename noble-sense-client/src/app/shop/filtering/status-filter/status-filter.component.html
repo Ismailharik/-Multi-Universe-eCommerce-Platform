@@ -1,0 +1,18 @@
+<div class="tp-shop-widget-content">
+  <div class="tp-shop-widget-checkbox">
+    <ul class="filter-items filter-checkbox">
+      <li *ngFor="let s of status; let i = index" class="filter-item checkbox">
+        <input type="checkbox" id="on-sale" name="on-sale" />
+        <label
+          (click)="handleStatusRoute(s)"
+          [for]="s"
+          [class.active]="
+            activeQuery ===
+            s.toLowerCase().replace('&', '').split(' ').join('-')
+          "
+          >{{ s }}</label
+        >
+      </li>
+    </ul>
+  </div>
+</div>

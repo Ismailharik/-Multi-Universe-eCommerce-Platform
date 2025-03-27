@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    username: ns_user
+    password: NSDB@2024@03@17
+    url: jdbc:mysql://15.237.144.35:3306/aws_nsdb?createDatabaseIfNotExist=true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+#aws credentials
+aws:
+  accessKey: XXXX
+  secretKey: XXXX
+  region: eu-west-3
+  s3:
+    bucketName: XXXX

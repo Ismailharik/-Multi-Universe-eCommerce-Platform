@@ -1,0 +1,50 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  8.3 Cart Modal CSS START
+/*----------------------------------------*/
+
+
+// video popup
+.video-overlay {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000000cc;
+  opacity: 0;
+  transition: all ease 500ms;
+  visibility: hidden;
+}
+.video-overlay-close {
+  position: absolute;
+  z-index: 1000;
+  top: 15px;
+  right: 20px;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.video-overlay.open {
+  position: fixed;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-overlay iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 0 0 15px #000000bf;
+  z-index: 1000;
+  width: 80%;
+  height: 80%;
+}

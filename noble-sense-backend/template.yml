@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: An AWS Serverless Application that includes a Spring Boot application on AWS Lambda with API Gateway.
+
+Globals:
+  Function:
+    Timeout: 20
+  Api:
+    Cors:
+      AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+      AllowHeaders: "'content-type,authorization'"
+      AllowOrigin: "'*'"
+
+Resources:
+  #-----------------------------------------------------
+  # Backend Configuration
+  #-----------------------------------------------------
+  SpringOnLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.noblesense.noblesense.config.LambdaHandler::handleRequest
+      Runtime: java17
+      CodeUri: .
+      MemorySize: 2024
+      SnapStart:
+        ApplyOn: "PublishedVersions"
+      AutoPublishAlias: "prod"
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambdaVPCAccessExecutionRole
+      Events:
+        ProxyApiGreedy:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+
+Outputs:
+  ApiURL:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+

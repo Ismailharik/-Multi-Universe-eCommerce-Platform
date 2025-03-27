@@ -1,0 +1,31 @@
+<section class="tp-instagram-area">
+  <div class="container-fluid pl-20 pr-20">
+     <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-1 gx-2 gy-2 gy-lg-0">
+      <div *ngFor="let item of instagram_data" class="col">
+        <ng-container *ngIf="!item.banner; else bannerBlock">
+          <div class="tp-instagram-item-2 w-img">
+            <img [src]="item.img" alt="insta-img">
+            <div class="tp-instagram-icon-2">
+              <a [href]="item.link" class="popup-image" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #bannerBlock>
+          <div class="tp-instagram-banner text-center">
+            <div class="tp-instagram-banner-icon mb-40">
+              <a href="#">
+                <img [src]="item.img" alt="insta-img">
+              </a>
+            </div>
+            <div class="tp-instagram-banner-content">
+              <span>Follow Us on</span>
+              <a href="#">Instagram</a>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+     </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+<section class="tp-special-area fix">
+  <div class="container">
+     <div class="row gx-2">
+        <div class="col-xl-5 col-md-6">
+           <div class="tp-special-slider-thumb">
+              <div class="tp-special-thumb">
+                 <img src="/assets/img/banner/houses-image-2.jpg" alt="">
+                 <div class="tp-special-hotspot-item pool-hotspot">
+                    <span class="tp-hotspot tp-pulse-border ">
+                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7 1V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                    </span>
+                    <div class="tp-special-hotspot-content">
+                       <h3 class="tp-special-hotspot-title">luxury Pool</h3>
+                       <p>Pool included with this home for more .</p>
+                    </div>
+                 </div>
+                 <div class="tp-special-hotspot-item tp-special-hotspot-2">
+                    <span class="tp-hotspot tp-pulse-border ">
+                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7 1V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                    </span>
+                    <div class="tp-special-hotspot-content">
+                       <h3 class="tp-special-hotspot-title">Skincare Product</h3>
+                       <p>comforting classic Chairs that looks great in the garden.</p>
+                    </div>
+                 </div>
+
+              </div>
+           </div>
+        </div>
+        <div class="col-xl-7 col-md-6">
+           <div class="tp-special-wrapper grey-bg-9 pt-85 pb-35">
+              <div class="tp-section-title-wrapper-3 mb-40 text-center">
+                 <span class="tp-section-title-pre-3">Trending This Week’s</span>
+                 <h3 class="tp-section-title-3">Special products</h3>
+              </div>
+              <div class="tp-special-slider ">
+                 <div class="row gx-0 justify-content-center">
+                    <div class="col-xl-5 col-lg-7 col-md-9 col-sm-7">
+                       <div class="tp-special-slider-inner p-relative  ">
+                          <div class="tp-special-slider-active swiper-container" #swiperContainer>
+                             <div class="swiper-wrapper">
+                                <div class="tp-special-item swiper-slide grey-bg-9" *ngFor="let item of products">
+                                  <app-product-item-three [product]="item" [isCenter]="true"/>
+                                </div>
+                             </div>
+                          </div>
+                          <!-- dot style -->
+                          <div class="tp-swiper-dot tp-special-slider-dot d-sm-none text-center"></div>
+                          <div class="tp-special-arrow d-none d-sm-block">
+                             <button (click)="swiperInstance?.slidePrev()" class="tp-special-slider-button-prev">
+                                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                             </button>
+                             <button (click)="swiperInstance?.slideNext()" class="tp-special-slider-button-next">
+                                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                             </button>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
