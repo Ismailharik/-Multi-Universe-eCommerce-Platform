@@ -4,15 +4,24 @@
 
 NobleSense is a complete ecommerce solution designed to help students and developers learn full-stack development with Angular, Spring Boot, and MySQL. This project serves as an educational resource for end-of-study internships and practical web development training.
 
-## Features
 
+## 🚀 Features
 - **Multi-role System** (Admin, Customer)
-- **Product Catalog** with categories and filters
-- **Shopping Cart** and checkout process
-- **Order Management** system
-- **User Authentication** with Spring Security
+- **Product Management** with categories & filters
+- **Shopping Cart** & Checkout System
+- **Order Tracking** Dashboard
+- **JWT Authentication** with Spring Security
+- **AWS Cloud Deployment** (EC2, S3, CloudFront)
 - **Responsive Design** for all devices
-- **Admin Dashboard** for content management
+
+
+## 🛠️ Technology Stack
+| Component       | Technologies                          |
+|-----------------|---------------------------------------|
+| **Frontend**    | Angular 15, Angular Material, SCSS    |
+| **Backend**     | Spring Boot 3, Spring Security, JWT   |
+| **Database**    | MySQL 8                               |
+| **Cloud**       | AWS (EC2, S3, CloudFront), SAM        |
 
 ## Technology Stack
 
@@ -43,5 +52,3 @@ NobleSense is a complete ecommerce solution designed to help students and develo
 ### 3. Backend Architecture
 ![Backend Architecture](imgs/backend-architecture.png)  
 *API service structure and database interaction*
-
-### Backend (Spring Boot)
