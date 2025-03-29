@@ -3,6 +3,9 @@
 ![Project Banner](/imgs/banner.png)
 
 NobleSense is a complete ecommerce solution designed to help students and developers learn full-stack development with Angular, Spring Boot, and MySQL. This project serves as an educational resource for end-of-study internships and practical web development training.
+## 🎥 Demo Video
+Watch the full demo on YouTube:  
+[https://www.youtube.com/watch?v=DF9iMobOQlU](https://www.youtube.com/watch?v=DF9iMobOQlU)
 
 
 ## 🚀 Features
